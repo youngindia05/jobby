@@ -15,7 +15,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.youngindia.jobportal.R;
-import com.youngindia.jobportal.ui.app.Search_list_Activity;
+import com.youngindia.jobportal.ui.Search_list_Activity;
 
 /**
  * A simple {@link Fragment} subclass.

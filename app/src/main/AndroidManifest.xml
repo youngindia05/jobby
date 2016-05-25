@@ -57,7 +57,7 @@
             android:label="@string/title_activity_details__page"
             android:theme="@style/AppTheme"></activity>
         <activity android:name=".ui.DailyWagesRegstr"></activity>
-        <activity android:name=".ui.app.Search_list_Activity"></activity>
+        <activity android:name=".ui.Search_list_Activity"></activity>
     </application>
 
 </manifest>

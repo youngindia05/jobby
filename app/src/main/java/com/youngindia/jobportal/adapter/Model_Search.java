@@ -6,15 +6,20 @@ import java.util.ArrayList;
  * Created by anupam on 20-05-2016.
  */
 public class Model_Search {
-    private String jobname, Qualification,location;
-    private ArrayList<String> genre;
+    private String Jobname, Qualification,Location;
+
+    public Model_Search(String jobname, String qualification, String location) {
+        this.Jobname = jobname;
+        this.Qualification = qualification;
+        this.Location = location;
+    }
 
     public String getJobname() {
-        return jobname;
+        return Jobname;
     }
 
     public void setJobname(String jobname) {
-        this.jobname = jobname;
+        Jobname = jobname;
     }
 
     public String getQualification() {
@@ -26,18 +31,10 @@ public class Model_Search {
     }
 
     public String getLocation() {
-        return location;
+        return Location;
     }
 
     public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public ArrayList<String> getGenre() {
-        return genre;
-    }
-
-    public void setGenre(ArrayList<String> genre) {
-        this.genre = genre;
+        Location = location;
     }
 }

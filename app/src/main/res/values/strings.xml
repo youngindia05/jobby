@@ -1,0 +1,331 @@
+<resources>
+    <string name="app_name">YoungIndiaJobs</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_refresh">Settings</string>
+    <string name="action_new">Settings</string>
+    <string name="logo_desc">App logo</string>
+    <string name="country_name">Nigeria</string>
+    <string name="title_activity_login_user_">LoginUser_Activity</string>
+    <string name="username">Username</string>
+    <string name="txt_psw">Password</string>
+    <string name="btn_login">Login</string>
+    <string name="title_activity_employee__home">Employee_HomeActivity</string>
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_activity_company_detail">CompanyDetail</string>
+    <string name="min_exp"> Min Exp</string>
+    <string-array name="Min_number_arrays">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+    <string name="max_exp"> Max Exp</string>
+    <string-array name="number_arrays">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+
+    <string name="location">Location</string>
+    <string-array name="location_name">
+        <item>Bangalore</item>
+        <item>MySore</item>
+        <item>Punjab</item>
+        <item>Kerala</item>
+        <item>Goa</item>
+        <item>Gujarat</item>
+        <item>Rajasthan</item>
+        <item>Madhya Pradesh</item>
+        <item>Chhattisgarh</item>
+    </string-array>
+
+    <string name="industry">Industry</string>
+    <string-array name="industry_name">
+        <item>Automobiles</item>
+        <item>Chemicals</item>
+        <item>Construction and Capital Goods</item>
+        <item>Consumption products</item>
+        <item>Energy</item>
+        <item>Healthcare</item>
+        <item>Infrastructure</item>
+        <item>Metals</item>
+        <item>Retail and other services</item>
+        <item>Technology, Media and Telecomunication</item>
+    </string-array>
+
+    <string name="function">Function</string>
+    <string-array name="function_name">
+        <item> Admin/Secretarial</item>
+        <item>Fresher</item>
+        <item>Administration Executive</item>
+        <item>Computer Operator/ Data Entry </item>
+        <item> Typist   </item>
+        <item> Despatch Incharge  </item>
+        <item>Other Admin/Clerical/Secretarial</item>
+        <item> Receptionist/ Front Desk </item>
+        <item>	Secretarial</item>
+        <item>Executive Secretary/Personal Assistant  </item>
+        <item>	Facilities Manager</item>
+        <item> Administration Manager </item>
+        <item>  VP/ GM - Administration</item>
+        <item> Trainee</item>
+        <item> Software Engineer/ Programmer</item>
+        <item>  Systems Engineer</item>
+        <item> Team Leader/ Technical Leader</item>
+        <item>  System Analyst/ Tech Architect</item>
+        <item> Business Analyst</item>
+        <item>  Project Leader/ Project Manager</item>
+        <item>Database Administrator (DBA)</item>
+        <item>   Database Architect/ Designer</item>
+        <item>
+        Delivery Manager</item>
+        <item>  Program Manager</item>
+        <item>   Datawarehousing Consultants</item>
+        <item>System Administrator</item>
+        <item>   H/W Installation/ Maintenance Engg</item>
+        <item>
+        Network Administrator</item>
+        <item>  Network Designer</item> <item>
+        Security Analyst</item>
+        <item>
+        System Security - Engineer</item>
+        <item>Technical Support Engineer</item>
+        <item>  Software Test Engineer</item>
+        <item> System Integrator</item>
+        <item>Graphic Designer/ Animator</item>
+        <item> ERP, CRM - Functional Consultant</item>
+        <item>  ERP, CRM - Technical Consultant</item>
+        <item>   ERP, CRM - Support Engineer</item>
+        <item>   S/W Installation/ Maintenance Engg</item>
+        <item> Product Manager</item>
+        <item>   Configuration Mgr/ Release Manager</item>
+        <item>  Trainer/ Faculty</item>
+        <item>   Technical Writer</item>
+        <item>  VP/ GM - Quality</item>
+        <item> Web Master/ Web Site Manager</item>
+        <item>   SEO Expert</item>
+        <item>       Hardware Design Engineer</item>
+        <item> Hardware Design Technical Leader</item>
+        <item> Quality Assurance Executive</item>
+        <item> Quality Assurance - Manager</item>
+        <item>  Computer Operator/ Data Entry</item>
+        <item> Instructional Designer</item>
+        <item> EDP Analyst</item>
+        <item> IT/ Networking (EDP) - Manager</item>
+        <item> Information Systems (MIS) - Manager</item>
+        <item>     MIS Executive</item>
+        <item> VP/ Head - Technology (IT)</item>
+        <item> Chief Technology Officer</item>
+        <item>   Chief Information Officer </item>
+        <item>     VP - Operations/ COO</item>
+        <item>   SBU Head /Profit Centre Head</item>
+        <item> CEO/ MD/ Country Manager</item>
+        <item>  Director on Board</item>
+        <item> External Consultant</item>
+        <item>Other Software/Hardware/EDP</item>
+        <item> Legal</item>
+        <item>  Marketing and Communications</item>
+        <item>   Purchase/ Logistics/ Supply Cha ...</item>
+        <item>  Sales/ Business Development</item>
+        <item> Advertising/Entertainment/Media</item>
+        <item>  Banking, Insurance  and Financial ...</item>
+        <item> Construction</item>
+        <item>Education/ Teaching</item>
+        <item>  Export/ Import</item>
+        <item>  Health Care</item>
+        <item> Travel/ Airlines</item>
+        <item> Telecom/ ISP</item>
+        <item>  Retail Chains</item>
+        <item> Real Estate</item>
+        <item> Analytics/Business Intelligence</item>
+        <item>Pharmaceutical/ Biotechnology</item>
+        <item> Oil and Gas</item>
+        <item> Manufacturing/ Engineering/ R and D</item>
+        <item> Hotels/ restaurants</item>
+    </string-array>
+
+    <string name="user_name">User name</string>
+    <string name="user_qualification">MCA(Computer Application)</string>
+    <string name="Skill">user Skill</string>
+    <string name="user_skill">C,C++,JAVA,Android</string>
+    <string name="user_specialization">User Specialization</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_name">Fullname</string>
+    <string name="btn_register">REGISTER</string>
+    <string name="btn_link_to_register">Not a member? Sign up now.</string>
+    <string name="btn_link_to_login">Already registred! Login Me.</string>
+    <string name="welcome">Welcome</string>
+    <string name="btn_logout">LOGOUT</string>
+    <string name="name">Fullname</string>
+
+    <string name="designation">Designation</string>
+    <string name="qualification">Qualification</string>
+    <string name="salary">Salary</string>
+    <string name="search">Search</string>
+    <string name="hint_desgntion">eg.Skills,Android,Java</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_search_">Search_Activity</string>
+
+
+    <string-array name="country_arrays">
+        <item>Location</item>
+        <item>Bangalore</item>
+        <item>Delhi</item>
+        <item>Chennai</item>
+        <item>Hyderabad</item>
+        <item>Mumbai</item>
+
+    </string-array>
+    <string-array name="qualification_arrays">
+        <item>Qualification</item>
+        <item>MCA</item>
+        <item>BCA</item>
+        <item>BTECH</item>
+        <item>BCOM</item>
+        <item>BSC</item>
+
+    </string-array>
+    <string-array name="salary">
+        <item>Salary</item>
+        <item>1Lac</item>
+        <item>2Lac</item>
+        <item>3Lac</item>
+        <item>4Lac</item>
+        <item>5Lac</item>
+        <item>6Lac</item>
+        <item>7Lac</item>
+        <item>8Lac</item>
+        <item>9Lac</item>
+        <item>10Lac</item>
+    </string-array>
+
+    <string name="higher_education">Higher Education</string>
+    <string name="specilization">Speclization</string>
+    <string name="university">University</string>
+    <string name="jobskill">Job Skill</string>
+    <string name="expected_slry">Expected Salary</string>
+    <string name="total_experecnce">Total Experience</string>
+
+    <string name="year">Year of passed</string>
+    <string-array name="year_name">
+        <item>Please select the value</item>
+        <item>2013</item>
+        <item>2014</item>
+        <item>2015</item>
+        <item>2016</item>
+        <item>2017</item>
+    </string-array>
+    <string name="title_activity_search__result">Search_Result</string>
+    <string name="title_activity_employer__home">Employer_HomeActivity</string>
+    <string name="inbox">Inbox</string>
+    <string name="categories">Categories</string>
+    <string name="starred">Post a Job</string>
+
+    <string-array name="items">
+        <item>Please select the value</item>
+        <item>Item 1</item>
+        <item>Item 2</item>
+        <item>Item 3</item>
+        <item>Item 4</item>
+        <item>Item 5</item>
+        <item>Item 6</item>
+    </string-array>
+
+
+    <string name="title_activity_employer_home1_">EmployerHome1_Activity</string>
+    <string name="drawer_open">Slider Menu Opened</string>
+    <string name="drawer_close">Slider Menu Closed</string>
+    <!-- Nav Drawer Menu Items -->
+    <string-array name="nav_drawer_items">
+        <item>Home</item>
+        <item>Post A job</item>
+        <item>Profile</item>
+        <item>Reviews</item>
+        <item>Logout</item>
+
+    </string-array>
+
+    <string name="gender">Gender</string>
+    <string name="contact">Contact no</string>
+    <string name="occupation">Occupation</string>
+    <string name="profession">Profession</string>
+    <string-array name="profession_name">
+        <item>Please select the value</item>
+        <item>Plamber</item>
+        <item>Barber</item>
+        <item>Tailor</item>
+        <item>Designer</item>
+        <item></item>
+        <item></item>
+        <item></item>
+    </string-array>
+    <!-- Daily Wagers -->
+    <string name="wages">Wages</string>
+    <string-array name="wages_rs">
+        <item>Please select the value</item>
+        <item>Rs. 1000</item>
+        <item>Rs. 2000</item>
+        <item>Rs. 3000</item>
+        <item>Rs. 4000</item>
+        <item>Rs. 5000</item>
+        <item>Rs. 6000</item>
+        <item>Rs. 7000</item>
+        <item>Rs. 8000</item>
+        <item>Rs. 9000</item>
+    </string-array>
+    <string name="charge_per_hour">Charges per hour</string>
+    <string-array name="charges">
+        <item>Please select the value</item>
+        <item>1 hr</item>
+        <item>2 hr</item>
+        <item>3 hr</item>
+        <item>4 hr</item>
+        <item>5 hr</item>
+        <item>6 hr</item>
+        <item>7 hr</item>
+        <item>8 hr</item>
+        <item>9hr</item>
+    </string-array>
+    <!-- Nav Drawer List Item Icons -->
+    <!-- Keep them in order as the titles are in -->
+    <array name="nav_drawer_icons">
+        <item>@drawable/ic_menu_camera</item>
+        <item>@drawable/ic_menu_manage</item>
+        <item>@drawable/ic_menu_gallery</item>
+        <item>@drawable/ic_menu_share</item>
+        <item>@drawable/ic_menu_slideshow</item>
+
+
+    </array>
+    <string name="title_activity_company__base">Company_Base</string>
+    <string name="old_password">Old Password</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="name_Daily_wages">Name</string>
+    <string name="title_activity_app__faq">App_Faq</string>
+    <string name="title_activity_company__details">Company_Details</string>
+    <string name="title_activity_company_candidatelist">Company_candidatelist</string>
+    <string name="title_activity_details__page">Details_Page</string>
+
+</resources>

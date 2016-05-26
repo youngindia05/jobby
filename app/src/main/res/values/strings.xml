@@ -17,6 +17,7 @@
     <string name="title_activity_company_detail">CompanyDetail</string>
     <string name="min_exp"> Min Exp</string>
     <string-array name="Min_number_arrays">
+        <item>Select Min Experience</item>
         <item>0</item>
         <item>1</item>
         <item>2</item>
@@ -31,6 +32,7 @@
     </string-array>
     <string name="max_exp"> Max Exp</string>
     <string-array name="number_arrays">
+        <item>Select Max Experience</item>
         <item>0</item>
         <item>1</item>
         <item>2</item>
@@ -46,6 +48,7 @@
 
     <string name="location">Location</string>
     <string-array name="location_name">
+        <item>Select Location</item>
         <item>Bangalore</item>
         <item>MySore</item>
         <item>Punjab</item>
@@ -59,6 +62,7 @@
 
     <string name="industry">Industry</string>
     <string-array name="industry_name">
+        <item>Select Industry</item>
         <item>Automobiles</item>
         <item>Chemicals</item>
         <item>Construction and Capital Goods</item>
@@ -73,6 +77,7 @@
 
     <string name="function">Function</string>
     <string-array name="function_name">
+        <item>Select Function</item>
         <item> Admin/Secretarial</item>
         <item>Fresher</item>
         <item>Administration Executive</item>
@@ -228,12 +233,21 @@
     <string name="description">Description</string>
     <string name="apply">Apply</string>
     <string name="experecnce">Experience</string>
+    <string name="name1">Name</string>
+    <string name="email">Email</string>
+    <string name="phone">Phone</string>
+    <string name="role">Role</string>
+
+    <string name="job_owner_Detail">Job Owner Details</string>
     <string name="expected_slry">Expected Salary</string>
+    <string name="job">Job</string>
+    <string name="job_detail">Job Detail</string>
+    <string name="key_skill">Key Skills</string>
     <string name="total_experecnce">Total Experience</string>
 
     <string name="year">Year of passed</string>
     <string-array name="year_name">
-        <item>Please select the value</item>
+        <item>Select Year</item>
         <item>2013</item>
         <item>2014</item>
         <item>2015</item>
@@ -245,7 +259,6 @@
     <string name="inbox">Inbox</string>
     <string name="categories">Categories</string>
     <string name="starred">Post a Job</string>
-
     <string-array name="items">
         <item>Please select the value</item>
         <item>Item 1</item>
@@ -275,7 +288,7 @@
     <string name="occupation">Occupation</string>
     <string name="profession">Profession</string>
     <string-array name="profession_name">
-        <item>Please select the value</item>
+        <item>Select Profession</item>
         <item>Plamber</item>
         <item>Barber</item>
         <item>Tailor</item>
@@ -287,7 +300,7 @@
     <!-- Daily Wagers -->
     <string name="wages">Wages</string>
     <string-array name="wages_rs">
-        <item>Please select the value</item>
+        <item>Select Wages</item>
         <item>Rs. 1000</item>
         <item>Rs. 2000</item>
         <item>Rs. 3000</item>
@@ -298,9 +311,10 @@
         <item>Rs. 8000</item>
         <item>Rs. 9000</item>
     </string-array>
+
     <string name="charge_per_hour">Charges per hour</string>
     <string-array name="charges">
-        <item>Please select the value</item>
+        <item>Select Hours</item>
         <item>1 hr</item>
         <item>2 hr</item>
         <item>3 hr</item>

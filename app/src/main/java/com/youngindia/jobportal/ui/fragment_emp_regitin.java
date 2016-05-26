@@ -11,7 +11,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.youngindia.jobportal.R;
 
@@ -30,6 +35,8 @@ public class fragment_emp_regitin extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     Employee_RegistrationActivity employee_registrationActivity;
     Button nxtbtn;
+    Spinner spinner_industry;
+    TextView edt_other;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -72,6 +79,13 @@ public class fragment_emp_regitin extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootview=inflater.inflate(R.layout.fragment_fragment_emp_regitin, container, false);
+        spinner_industry=(Spinner)rootview.findViewById(R.id.spinner_Industry);
+        edt_other=(TextView)rootview.findViewById(R.id.edt_others);
+        if(spinner_industry.getSelectedItem().equals("Others"))
+        {
+            edt_other.setVisibility(View.VISIBLE);
+        }
+
         nxtbtn=(Button)rootview.findViewById(R.id.btn);
         nxtbtn.setOnClickListener(new View.OnClickListener() {
             @Override

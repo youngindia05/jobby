@@ -41,9 +41,6 @@ public class Search_Result extends AppCompatActivity {
     Context context;
 
     public static ArrayList<Model_Search> searchlist = new ArrayList<Model_Search>();
-//    public String[]job_name={"Android Developer", "Senior Android Developer", "Mobile Android Developer"};
-//    public String[]job_specification={"Young India,Bangalore", "Talpro,Bangalore", "ABC,Bangalore"};
-//    public String[]job_skills={"android,core java","xml,android","json,android,xml"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,8 +54,8 @@ public class Search_Result extends AppCompatActivity {
         Qualification=( myIntent.getStringExtra("Qualification"));
         location=( myIntent.getStringExtra("Location"));;
         salary=(myIntent.getStringExtra("Salary"));
-        BackTask bt=new BackTask();
-        bt.execute();
+//        BackTask bt=new BackTask();
+//        bt.execute();
         adapter=new Search_Adapter(this,R.layout.customsearch_layout,searchlist);
         search_list.setAdapter(adapter);
 
@@ -67,8 +64,8 @@ public class Search_Result extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-//        BackTask bt=new BackTask();
-//        bt.execute();
+        BackTask bt=new BackTask();
+        bt.execute();
 
     }
 

@@ -20,7 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.MessageSendActivity" />
-        <activity android:name=".ui.LoginUser_Activity" />
+        <activity android:name=".ui.LoginUser_Activity"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
         <activity android:name=".ui.Employee_RegistrationActivity" />
         <activity
             android:name=".ui.Employee_HomeActivity"

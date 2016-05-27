@@ -16,6 +16,8 @@ public class App_Faq extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app__faq);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setNavigationIcon(R.drawable.toolbar_backbtn);
+
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);

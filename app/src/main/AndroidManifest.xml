@@ -20,9 +20,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.MessageSendActivity" />
+
+
+
         <activity android:name=".ui.LoginUser_Activity"
-            android:windowSoftInputMode="stateAlwaysHidden"/>
+        android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".ui.Employee_RegistrationActivity" />
+
         <activity
             android:name=".ui.Employee_HomeActivity"
             android:label="@string/title_activity_employee__home"
@@ -44,7 +48,8 @@
         <activity
             android:name=".ui.App_Faq"
             android:label="@string/title_activity_app__faq"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".ui.Employee_HomeActivity"/>
         <activity
             android:name=".ui.CompanyDetail"
             android:label="@string/title_activity_app__faq"
@@ -58,7 +63,13 @@
             android:label="@string/title_activity_details__page"
             android:theme="@style/AppTheme"></activity>
         <activity android:name=".ui.DailyWagesRegstr"></activity>
+
         <activity android:name=".ui.Search_list_Activity"></activity>
+        <!-- ATTENTION: This was auto-generated to add Google Play services to your project for
+             App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>

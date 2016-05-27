@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.youngindia.jobportal.R;
 
@@ -69,7 +70,6 @@ public class fragmnet_emp_reg2 extends Fragment implements SeekBar.OnSeekBarChan
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootview=inflater.inflate(R.layout.fragment_fragmnet_emp_reg2, container, false);
-
         btn_submit=(Button)rootview.findViewById(R.id.btn_submit);
         seekBar_experience= (SeekBar) rootview.findViewById(R.id.seekBar_Experience);
         textViewProgress = (TextView)rootview.findViewById(R.id.textProgress);
@@ -149,11 +149,19 @@ public class fragmnet_emp_reg2 extends Fragment implements SeekBar.OnSeekBarChan
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
-   /* @Override
+    @Override
     public void onResume() {
         super.onResume();
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         ActionBar actionBar = activity.getSupportActionBar();
+        employee_registrationActivity. toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().popBackStack();
+              // Toast.makeText(getActivity().getApplicationContext(), "Back", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         actionBar.setTitle("Educational Details");
-    }*/
+    }
 }

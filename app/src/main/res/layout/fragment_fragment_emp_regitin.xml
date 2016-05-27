@@ -4,10 +4,12 @@
     android:layout_height="match_parent"
     tools:context="com.youngindia.jobportal.ui.fragment_emp_regitin"
     android:background="@color/backgd_light_blue">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/scrollview1">
+        android:id="@+id/scrollview1"
+        android:layout_gravity="center_horizontal|bottom">
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -135,7 +137,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:id="@+id/linearlayout_04"
             android:background="@drawable/spinner_shape"
             android:layout_below="@+id/tv_industry"
@@ -149,23 +151,34 @@
                 android:contextClickable="true"
                 android:textColor="@color/textColorPrimary"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true">
+                android:layout_alignParentStart="true"
+                android:layout_weight="0.5">
             </Spinner>
+            <TextView
+                android:layout_width="340dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/edt_others"
+                android:text="hello"
+                android:singleLine="true"
+                android:visibility="invisible"
+                android:layout_weight="0.5"/>
         </LinearLayout>
-        <com.youngindia.jobportal.fonts.Roboto_Regular_Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btn"
-            android:text="Next"
-            android:textSize="@dimen/btn_txtsize"
-            android:background="@drawable/btnshape"
-            android:textColor="@color/btn_textColor"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_below="@+id/linearlayout_04"
-            android:layout_alignParentBottom="true" />
     </RelativeLayout>
     </ScrollView>
+
+    <com.youngindia.jobportal.fonts.Roboto_Regular_Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn"
+        android:text="Next"
+        android:textSize="@dimen/btn_txtsize"
+        android:background="@drawable/btnshape"
+        android:textColor="@color/btn_textColor"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/linearlayout_04"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center_horizontal|bottom" />
 </FrameLayout>

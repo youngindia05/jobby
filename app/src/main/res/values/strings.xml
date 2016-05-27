@@ -59,6 +59,7 @@
 
     <string name="industry">Industry</string>
     <string-array name="industry_name">
+        <item>Others</item>
         <item>Automobiles</item>
         <item>Chemicals</item>
         <item>Construction and Capital Goods</item>
@@ -69,6 +70,7 @@
         <item>Metals</item>
         <item>Retail and other services</item>
         <item>Technology, Media and Telecomunication</item>
+
     </string-array>
 
     <string name="function">Function</string>
@@ -224,6 +226,10 @@
     <string name="specilization">Speclization</string>
     <string name="university">University</string>
     <string name="jobskill">Job Skill</string>
+    <string name="postion">Position</string>
+    <string name="description">Description</string>
+    <string name="apply">Apply</string>
+    <string name="experecnce">Experience</string>
     <string name="expected_slry">Expected Salary</string>
     <string name="total_experecnce">Total Experience</string>
 

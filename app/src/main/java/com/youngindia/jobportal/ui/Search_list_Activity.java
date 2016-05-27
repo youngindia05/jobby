@@ -1,15 +1,18 @@
-package com.youngindia.jobportal.ui.app;
+package com.youngindia.jobportal.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.youngindia.jobportal.R;
 import com.youngindia.jobportal.adapter.ListAdapter;
+import com.youngindia.jobportal.ui.Details_Page;
 
 import java.sql.Array;
 
@@ -32,6 +35,15 @@ public class Search_list_Activity extends AppCompatActivity {
         listView_search= (ListView) findViewById(R.id.listView_serachitems);
         listAdapter=new ListAdapter(this,job_name,job_wages,job_hr);
         listView_search.setAdapter(listAdapter);
+
+        listView_search.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Intent i=new Intent(Search_list_Activity.this, Details_Page.class);
+                startActivity(i);
+            }
+        });
 
 
 

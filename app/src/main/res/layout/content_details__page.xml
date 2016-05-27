@@ -11,7 +11,96 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.youngindia.jobportal.ui.Details_Page"
     tools:showIn="@layout/activity_details__page">
-
+    <com.youngindia.jobportal.fonts.Roboto_Regular
+        android:id="@+id/tv_position"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="@dimen/lbl_txtsize"
+        android:layout_height="wrap_content"
+        android:text="@string/postion"
+        android:layout_width="match_parent"/>
+    <TextView
+        android:id="@+id/retrive_text_postion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/lbl_txtsize"
+        android:singleLine="true"
+        android:layout_marginBottom="@dimen/mrgin_btwn_edtText"
+        android:layout_below="@+id/tv_position"/>
+    <com.youngindia.jobportal.fonts.Roboto_Regular
+        android:id="@+id/tv_description"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="@dimen/lbl_txtsize"
+        android:layout_height="wrap_content"
+        android:text="@string/description"
+        android:layout_below="@id/retrive_text_postion"
+        android:layout_width="match_parent"/>
+    <TextView
+        android:id="@+id/retrive_text_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/lbl_txtsize"
+        android:singleLine="true"
+        android:layout_marginBottom="@dimen/mrgin_btwn_edtText"
+        android:layout_below="@+id/tv_description"/>
+    <com.youngindia.jobportal.fonts.Roboto_Regular
+        android:id="@+id/tv_expernc"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="@dimen/lbl_txtsize"
+        android:layout_height="wrap_content"
+        android:text="@string/experecnce"
+        android:layout_below="@id/retrive_text_description"
+        android:layout_width="match_parent"/>
+    <TextView
+        android:id="@+id/retrive_text_experecnce"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/lbl_txtsize"
+        android:singleLine="true"
+        android:layout_marginBottom="@dimen/mrgin_btwn_edtText"
+        android:layout_below="@+id/tv_expernc"/>
+    <com.youngindia.jobportal.fonts.Roboto_Regular
+        android:id="@+id/tv_location"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="@dimen/lbl_txtsize"
+        android:layout_height="wrap_content"
+        android:text="@string/location"
+        android:layout_below="@id/retrive_text_experecnce"
+        android:layout_width="match_parent"/>
+    <TextView
+        android:id="@+id/retrive_text_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/lbl_txtsize"
+        android:singleLine="true"
+        android:layout_marginBottom="@dimen/mrgin_btwn_edtText"
+        android:layout_below="@+id/tv_location"/>
+    <com.youngindia.jobportal.fonts.Roboto_Regular
+        android:id="@+id/tv_salary"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="@dimen/lbl_txtsize"
+        android:layout_height="wrap_content"
+        android:text="@string/salary"
+        android:layout_below="@id/retrive_text_location"
+        android:layout_width="match_parent"/>
+    <TextView
+        android:id="@+id/Tv_salary"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/edt_height_normal"
+        android:textSize="@dimen/lbl_txtsize"
+        android:singleLine="true"
+        android:layout_marginBottom="@dimen/mrgin_btwn_edtText"
+        android:layout_below="@+id/tv_expernc"/>
+    <com.youngindia.jobportal.fonts.Roboto_Regular_Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_apply"
+        android:text="@string/apply"
+        android:textColor="@color/btn_textColor"
+        android:background="@drawable/btnshape"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="60dp" />
 
 
 </RelativeLayout>

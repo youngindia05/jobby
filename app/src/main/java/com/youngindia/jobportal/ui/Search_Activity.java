@@ -62,8 +62,12 @@ public class Search_Activity extends AppCompatActivity {
                 if (!autoCompleteTextView.getText().toString().isEmpty() || !qualification.getSelectedItem().toString().isEmpty() || !location.getSelectedItem().toString().isEmpty())
 
                 {
-                    getData();
-                    Intent intent = new Intent(Search_Activity.this, Search_Result.class);
+                    //getData();
+                    Intent intent =new Intent(Search_Activity.this,Search_Result.class);
+                    intent.putExtra("Keyword",autoCompleteTextView.getText().toString().trim());
+                    intent.putExtra("Qualification",qualification.getSelectedItem().toString().trim());
+                    intent.putExtra("Location",location.getSelectedItem().toString().trim());
+                    intent.putExtra("Salary",salary.getSelectedItem().toString().trim());
                     startActivity(intent);
                 } else {
 Toast.makeText(getApplicationContext(),"please enter the value",Toast.LENGTH_SHORT).show();

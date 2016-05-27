@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.youngindia.jobportal.R;
 
@@ -66,12 +67,15 @@ public class fragment_emp_regitin extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootview=inflater.inflate(R.layout.fragment_fragment_emp_regitin, container, false);
+
+
         nxtbtn=(Button)rootview.findViewById(R.id.btn);
         nxtbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,7 +86,7 @@ public class fragment_emp_regitin extends Fragment {
                 //   sScreen = getResources().getString(R.string.title_wall);
                 fragmenttransaction.replace(R.id.frame_container1, fragmnet_emp_reg2);
                 fragmenttransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                fragmenttransaction.commit();
+                fragmenttransaction.addToBackStack( "tag" ).commit();
             }
         });
         // Inflate the layout for this fragment
@@ -121,11 +125,18 @@ public class fragment_emp_regitin extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
-   /* @Override
+    @Override
     public void onResume() {
         super.onResume();
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         ActionBar actionBar = activity.getSupportActionBar();
         actionBar.setTitle("Educational Details");
-    }*/
+        employee_registrationActivity. toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               employee_registrationActivity.finish();
+               // Toast.makeText(getActivity().getApplicationContext(), "Back clicked!", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 }

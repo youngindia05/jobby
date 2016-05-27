@@ -13,12 +13,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
-<<<<<<< HEAD
-=======
+
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
->>>>>>> d39a4fbafd6b5641eaf1d6baf25c28d4734a7df6
+
 import android.widget.Toast;
 
 import com.youngindia.jobportal.R;
@@ -83,16 +82,16 @@ public class fragment_emp_regitin extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootview=inflater.inflate(R.layout.fragment_fragment_emp_regitin, container, false);
-<<<<<<< HEAD
 
-=======
+
+
         spinner_industry=(Spinner)rootview.findViewById(R.id.spinner_Industry);
         edt_other=(TextView)rootview.findViewById(R.id.edt_others);
         if(spinner_industry.getSelectedItem().equals("Others"))
         {
             edt_other.setVisibility(View.VISIBLE);
         }
->>>>>>> d39a4fbafd6b5641eaf1d6baf25c28d4734a7df6
+
 
         nxtbtn=(Button)rootview.findViewById(R.id.btn);
         nxtbtn.setOnClickListener(new View.OnClickListener() {

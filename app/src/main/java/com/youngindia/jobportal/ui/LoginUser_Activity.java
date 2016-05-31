@@ -86,7 +86,7 @@ public class LoginUser_Activity extends AppCompatActivity {
                     status="Isdailywager";
                     Intent intent = new Intent(LoginUser_Activity.this, DailyWagesRegstr.class);
                     startActivity(intent);
-                    finish();
+
                 }
                 if (checkedId==R.id.button44)
                 {
@@ -182,14 +182,14 @@ public class LoginUser_Activity extends AppCompatActivity {
                             Intent intent = new Intent(LoginUser_Activity.this,
                                     Employee_RegistrationActivity.class);
                             startActivity(intent);
-                            finish();
+
                         }
                         else
                         {
                             Intent intent = new Intent(LoginUser_Activity.this,
                                     Company_Base.class);
                             startActivity(intent);
-                            finish();
+
                         }
                         if(status.equals("IsFranchis"))
                         {

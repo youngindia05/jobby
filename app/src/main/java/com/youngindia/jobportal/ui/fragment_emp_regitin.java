@@ -12,10 +12,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import android.widget.Toast;
@@ -79,18 +81,43 @@ public class fragment_emp_regitin extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         View rootview=inflater.inflate(R.layout.fragment_fragment_emp_regitin, container, false);
 
 
 
         spinner_industry=(Spinner)rootview.findViewById(R.id.spinner_Industry);
+
         edt_other=(TextView)rootview.findViewById(R.id.edt_others);
-        if(spinner_industry.getSelectedItem().equals("Others"))
+      //  spinner_industry.setSelection(11);
+       // spinner_industry.setSelection((ArrayAdapter)spinner_industry.getAdapter()("Category 2"));
+
+        spinner_industry.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                {
+                    switch (position) {
+                        case 10:
+                            edt_other.setVisibility(View.VISIBLE);
+                            //Toast.makeText(getActivity().getApplicationContext(),"hi",Toast.LENGTH_SHORT).show();
+                            break;
+                        default:edt_other.setVisibility(View.GONE);
+
+                    }
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+       /* if(spinner_industry.getSelectedItem().equals("Others"))
         {
             edt_other.setVisibility(View.VISIBLE);
-        }
+        }*/
 
 
         nxtbtn=(Button)rootview.findViewById(R.id.btn);
@@ -152,7 +179,7 @@ public class fragment_emp_regitin extends Fragment {
             @Override
             public void onClick(View view) {
                employee_registrationActivity.finish();
-               // Toast.makeText(getActivity().getApplicationContext(), "Back clicked!", Toast.LENGTH_SHORT).show();
+               //
             }
         });
     }

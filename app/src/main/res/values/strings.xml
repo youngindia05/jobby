@@ -59,7 +59,6 @@
 
     <string name="industry">Industry</string>
     <string-array name="industry_name">
-        <item>Others</item>
         <item>Automobiles</item>
         <item>Chemicals</item>
         <item>Construction and Capital Goods</item>
@@ -70,6 +69,7 @@
         <item>Metals</item>
         <item>Retail and other services</item>
         <item>Technology, Media and Telecomunication</item>
+        <item>Others</item>
 
     </string-array>
 

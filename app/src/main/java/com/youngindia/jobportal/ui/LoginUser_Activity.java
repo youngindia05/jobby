@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
@@ -43,7 +44,7 @@ public class LoginUser_Activity extends AppCompatActivity {
     String status="Iscandidat";
     AppController mInstance;
     SegmentedGroup segmented2;
-    TextView txt_forgetpsw;
+    TextView txt_forgetpsw,txt_registration;
     private static final String TAG = LoginUser_Activity.class.getSimpleName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,11 +52,13 @@ public class LoginUser_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_login_user_);
         edt_username=(EditText)findViewById(R.id.edt_username);
         edt_password=(EditText)findViewById(R.id.edt_password);
+
         btn_Login=(Button) findViewById(R.id.btn_login);
         pDialog=new ProgressDialog(this);
         mInstance=new AppController();
         segmented2 = (SegmentedGroup)findViewById(R.id.segmented2);
         txt_forgetpsw=(TextView) findViewById(R.id.txt_forget_psw);
+        txt_registration=(TextView) findViewById(R.id.txt_newuserregistraation);
         txt_forgetpsw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,20 +66,20 @@ public class LoginUser_Activity extends AppCompatActivity {
                 dialog.showDialog(LoginUser_Activity.this,"Please Enter your mobile number here to get new credentials.");
             }
         });
-       // segmented2.setTintColor(Color.DKGRAY);
-       // segmented2.setTintColor(Color.parseColor("#FFD0FF3C"), Color.parseColor("#FF7B07B2"));
-        //segmented2.setTintColor(getResources().getColor(R.color.colorPrimaryDark));
         segmented2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if(checkedId==R.id.button21) {
                     status="Iscandidat";
-                  //  Toast.makeText(registrationActivity.this, "Cecked_id is Employee" + checkedId, Toast.LENGTH_LONG).show();
+                    edt_username.setText("");
+                    edt_password.setText("");
+                    txt_registration.setText("New User Registration Here!!!!");
                 }else
                 {
-                    //Toast.makeText(registrationActivity.this, "Cecked_id is Employer" + checkedId, Toast.LENGTH_LONG).show();
                     status="Iscompany";
-
+                    edt_username.setText("");
+                    edt_password.setText("");
+                    txt_registration.setText("New Employer/Company Registration Here!!!!");
                 }
                 if (checkedId==R.id.button33)
                 {
@@ -85,17 +88,15 @@ public class LoginUser_Activity extends AppCompatActivity {
                     startActivity(intent);
 
                 }
+                if (checkedId==R.id.button44)
+                {
+                    status="IsFranchis";
+                    edt_username.setText("");
+                    edt_password.setText("");
+                    txt_registration.setText("");
+                }
             }
         });
-
-//        SegmentedGroup segmented3 = (SegmentedGroup)findViewById(R.id.segmented3);
-//        segmented3.setTintColor(Color.parseColor("#FFD0FF3C"), Color.parseColor("#FF7B07B2"));
-//
-//        SegmentedGroup segmented4 = (SegmentedGroup)findViewById(R.id.segmented4);
-//        segmented4.setTintColor(getResources().getColor(R.color.radio_button_selected_color));
-        // Progress dialog
-//        ProgressDialog pDialog = new ProgressDialog(this);
-//        pDialog.setCancelable(false);
 
         // SQLite database handler
         db = new SqliteHandler(getApplicationContext());
@@ -189,6 +190,13 @@ public class LoginUser_Activity extends AppCompatActivity {
                                     Company_Base.class);
                             startActivity(intent);
 
+                        }
+                        if(status.equals("IsFranchis"))
+                        {
+                            Intent intent = new Intent(LoginUser_Activity.this,
+                                    Franchise_Activity.class);
+                            startActivity(intent);
+                            finish();
                         }
                     } else {
                         // Error in login. Get the error message

@@ -1,6 +1,7 @@
 package com.youngindia.jobportal.ui;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +24,20 @@ import android.widget.TextView;
 
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.youngindia.jobportal.R;
+import com.youngindia.jobportal.database.SessionManager;
+import com.youngindia.jobportal.ui.app.AppConfig;
+import com.youngindia.jobportal.ui.app.AppController;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -38,9 +53,17 @@ public class fragment_emp_regitin extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     Employee_RegistrationActivity employee_registrationActivity;
+    private static final String TAG = fragment_emp_regitin.class.getSimpleName();
     Button nxtbtn;
     Spinner spinner_industry;
     TextView edt_other;
+    private EditText HighestEducation,Specialization,University,PassedYear;
+    private Spinner Location,Industry;
+    private ProgressDialog pDialog;
+    AppController mInstance;
+    AppConfig mappconfig;
+    SessionManager session;
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -85,7 +108,18 @@ public class fragment_emp_regitin extends Fragment {
                              Bundle savedInstanceState) {
         View rootview=inflater.inflate(R.layout.fragment_fragment_emp_regitin, container, false);
 
+        HighestEducation = (EditText)rootview.findViewById(R.id.hightEducation_ED);
+        Specialization= (EditText) rootview.findViewById(R.id.specilization_ED);
+        University = (EditText) rootview.findViewById(R.id.university_ED);
+        PassedYear = (EditText)rootview.findViewById(R.id.year_ED);
+        Location=(Spinner)rootview.findViewById(R.id.spinner_location);
 
+        Industry=(Spinner)rootview.findViewById(R.id.spinner_Industry);
+
+        pDialog = new ProgressDialog(getActivity());
+        pDialog.setCancelable(false);
+        mInstance=new AppController();
+        mappconfig=new AppConfig();
 
         spinner_industry=(Spinner)rootview.findViewById(R.id.spinner_Industry);
 
@@ -124,17 +158,116 @@ public class fragment_emp_regitin extends Fragment {
         nxtbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmnet_emp_reg2 fragmnet_emp_reg2=new fragmnet_emp_reg2();
+
+
+                String highEducation = HighestEducation.getText().toString().trim();
+                String specialization = Specialization.getText().toString().trim();
+                String university = University.getText().toString().trim();
+                String passedYear = PassedYear.getText().toString().trim();
+                String location=Location.getSelectedItem().toString().trim();
+                String industry=Industry.getSelectedItem().toString().trim();
+                session = new SessionManager(getActivity().getApplicationContext());
+                HashMap<String, String> user1=session.getUsername();
+                String username = user1.get(SessionManager.KEY_NAME);
+                if (!highEducation.isEmpty() && !specialization.isEmpty() && !university.isEmpty() && !passedYear.isEmpty()
+                        && !location.isEmpty() && !industry.isEmpty() && !username.isEmpty()) {
+
+                    registerUser(highEducation, specialization, university, passedYear,location,industry,username);
+                } else {
+                    Toast.makeText(getActivity().getApplicationContext(),
+                            "Please enter your details!", Toast.LENGTH_LONG)
+                            .show();
+                }
+              /*  fragmnet_emp_reg2 fragmnet_emp_reg2=new fragmnet_emp_reg2();
 
                 FragmentTransaction fragmenttransaction = employee_registrationActivity.getSupportFragmentManager().beginTransaction();
                 //   sScreen = getResources().getString(R.string.title_wall);
                 fragmenttransaction.replace(R.id.frame_container1, fragmnet_emp_reg2);
                 fragmenttransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                fragmenttransaction.addToBackStack( "tag" ).commit();
+                fragmenttransaction.addToBackStack( "tag" ).commit();*/
             }
         });
         // Inflate the layout for this fragment
         return rootview;
+    }
+    private void registerUser(final String highEducation, final String specialization,
+                              final String university,final String passedyear,final String location,final  String industry,final  String username) {
+        // Tag used to cancel the request
+        String tag_string_req = "req_register";
+
+        pDialog.setMessage("Registering ...");
+
+        StringRequest strReq = new StringRequest(Request.Method.POST,
+                AppConfig.URL_USERDETAIL, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                Log.d(TAG, "Register Response: " + response.toString());
+
+                try {
+                    JSONObject jObj = null;
+                    try {
+                        jObj = new JSONObject(response);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    boolean error = jObj.getBoolean("error");
+                    if (!error) {
+
+                        fragmnet_emp_reg2 fragmnet_emp_reg2 = new fragmnet_emp_reg2();
+
+                        FragmentTransaction fragmenttransaction = employee_registrationActivity.getSupportFragmentManager().beginTransaction();
+                        //   sScreen = getResources().getString(R.string.title_wall);
+                        fragmenttransaction.replace(R.id.frame_container1, fragmnet_emp_reg2);
+                        fragmenttransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                        fragmenttransaction.addToBackStack( "tag" ).commit();
+                        Toast.makeText(getActivity().getApplicationContext(), "User details successfully stored" , Toast.LENGTH_LONG).show();
+
+                    } else {
+
+                        // Error occurred in registration. Get the error
+                        // message
+                        String errorMsg = jObj.getString("error_msg");
+                        Toast.makeText(getActivity().getApplicationContext(),
+                                errorMsg, Toast.LENGTH_LONG).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e(TAG, "Registration Error: " + error.getMessage());
+                Toast.makeText(getActivity().getApplicationContext(),
+                        error.getMessage(), Toast.LENGTH_LONG).show();
+                // hideDialog();
+            }
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() {
+                // Posting params to register url
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("username", username);
+                params.put("highEducation", highEducation);
+                params.put("specialization", specialization);
+                params.put("university", university);
+                params.put("passedyear",passedyear);
+                params.put("location",location);
+                params.put("industry",industry);
+
+
+
+                return params;
+            }
+
+        };
+
+        // Adding request to request queue
+        mInstance.getInstance().addToRequestQueue(strReq, tag_string_req);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

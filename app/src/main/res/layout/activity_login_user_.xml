@@ -19,7 +19,7 @@
         segmentedgroup:sc_corner_radius="10dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:weightSum="3"
+        android:weightSum="4"
         android:background="@color/colorPrimaryDark"
         android:layout_marginBottom="@dimen/fab_margin"
         android:paddingBottom="@dimen/fab_margin">
@@ -43,6 +43,14 @@
             android:layout_weight="1"
             android:textSize="@dimen/lbl_txtsize"/>
         <RadioButton
+            android:id="@+id/button44"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Franchises"
+            style="@style/RadioButton"
+            android:layout_weight="1"
+            android:textSize="@dimen/lbl_txtsize"/>
+        <RadioButton
             android:id="@+id/button33"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -57,8 +65,7 @@
         android:orientation="vertical"
         android:weightSum="4"
         android:id="@+id/LinearLayout_userlogin"
-        android:layout_centerInParent="true"
-        android:paddingTop="@dimen/fab_margin">
+        android:layout_marginTop="50dp">
            <com.youngindia.jobportal.fonts.Roboto_Regular
             android:id="@+id/txt_username"
             android:layout_width="match_parent"
@@ -76,7 +83,7 @@
             android:layout_weight="2"
             android:layout_marginTop="@dimen/fab_margin"
             android:textSize="@dimen/lbl_txtsize"
-            android:singleLine="true" />
+            android:singleLine="true"/>
         <com.youngindia.jobportal.fonts.Roboto_Regular
             android:id="@+id/txt_psw"
             android:layout_width="match_parent"
@@ -95,7 +102,8 @@
             android:layout_marginTop="@dimen/fab_margin"
             android:singleLine="true"
             android:maxLength="10"
-            android:digits="0,1,2,3,4,5,6,7,8,9"/>
+            android:inputType="number"
+            />
        <com.youngindia.jobportal.fonts.Roboto_Regular_Button
            android:id="@+id/btn_login"
            android:layout_width="match_parent"
@@ -111,6 +119,13 @@
                android:layout_height="wrap_content"
                android:textColor="@color/colorAccent"
                android:text="Forget Password ?"
+               android:layout_marginTop="@dimen/activity_horizontal_margin" />
+           <TextView
+               android:id="@+id/txt_newuserregistraation"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textColor="@color/colorAccent"
+               android:text="New User Registration Here!!!!"
                android:layout_marginTop="@dimen/activity_horizontal_margin" />
     </LinearLayout>
   </RelativeLayout>

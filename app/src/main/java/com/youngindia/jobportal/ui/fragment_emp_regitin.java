@@ -133,7 +133,7 @@ public class fragment_emp_regitin extends Fragment {
 
                 {
                     switch (position) {
-                        case 10:
+                        case 11:
                             edt_other.setVisibility(View.VISIBLE);
                             //Toast.makeText(getActivity().getApplicationContext(),"hi",Toast.LENGTH_SHORT).show();
                             break;

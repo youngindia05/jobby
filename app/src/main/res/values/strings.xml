@@ -334,4 +334,18 @@
     <string name="title_activity_company_candidatelist">Company_candidatelist</string>
     <string name="title_activity_details__page">Details_Page</string>
 
+    <string name="title_activity_main_">Main_Activity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_franchises_">Franchises_Activity</string>
+
+    <string-array name="franchise_array">
+        <item>Franchise_01</item>
+        <item>Franchise_02</item>
+        <item>Franchise_03</item>
+        <item>Franchise_04</item>
+        <item>Franchise_05</item>
+        <item>Franchise_06</item>
+    </string-array>
+
 </resources>

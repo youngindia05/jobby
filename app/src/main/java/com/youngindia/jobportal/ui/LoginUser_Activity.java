@@ -1,14 +1,19 @@
 package com.youngindia.jobportal.ui;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +26,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.youngindia.jobportal.R;
+import com.youngindia.jobportal.adapter.Dialog_Advertisement;
 import com.youngindia.jobportal.database.SessionManager;
 import com.youngindia.jobportal.database.SqliteHandler;
 import com.youngindia.jobportal.model.DefaultDialog;
@@ -45,6 +51,7 @@ public class LoginUser_Activity extends AppCompatActivity {
     AppController mInstance;
     SegmentedGroup segmented2;
     TextView txt_forgetpsw,txt_registration;
+    int SPLASH_TIME_OUT=5000;
     private static final String TAG = LoginUser_Activity.class.getSimpleName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,13 +59,14 @@ public class LoginUser_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_login_user_);
         edt_username=(EditText)findViewById(R.id.edt_username);
         edt_password=(EditText)findViewById(R.id.edt_password);
-
         btn_Login=(Button) findViewById(R.id.btn_login);
         pDialog=new ProgressDialog(this);
         mInstance=new AppController();
         segmented2 = (SegmentedGroup)findViewById(R.id.segmented2);
         txt_forgetpsw=(TextView) findViewById(R.id.txt_forget_psw);
         txt_registration=(TextView) findViewById(R.id.txt_newuserregistraation);
+        Dialog_Advertisement showAdvertisment=new Dialog_Advertisement();
+        showAdvertisment.showDialog(this,"I am happy.",R.drawable.profile_pic);
         txt_forgetpsw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -160,19 +168,19 @@ public class LoginUser_Activity extends AppCompatActivity {
                     if (!error) {
 //                         user successfully logged in
 //                         Create login session
-                       /* session.setLogin(true);
+                       // session.setLogin(true);
 
-                        // Now store the user in SQLite
-                        String uid = jObj.optString("uid");
-
-                        JSONObject user = jObj.getJSONObject("user");
-                        String name = user.optString("name");
-                        String email = user.optString("email");
-                        String created_at = user
-                                .optString("created_at");
-
-                        // Inserting row in users table
-                        db.addUser(name, email,password, uid, created_at);*/
+//                        // Now store the user in SQLite
+//                        String uid = jObj.optString("uid");
+//
+//                        JSONObject user = jObj.getJSONObject("user");
+//                        String name = user.optString("name");
+//                        String email = user.optString("email");
+//                        String created_at = user
+//                                .optString("created_at");
+//
+//                        // Inserting row in users table
+//                        db.addUser(name, email,password, uid, created_at);
 
                          //Launch main activity
                         String value=jObj.getString("status");

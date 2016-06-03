@@ -154,41 +154,30 @@
                     android:layout_alignParentStart="true"
                     android:layout_weight="0.5">
                 </Spinner>
-                <TextView
-                    android:layout_width="340dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/edt_others"
-                    android:text="hello"
-                    android:singleLine="true"
-                    android:visibility="invisible"
-                    android:layout_weight="0.5"/>
             </LinearLayout>
+            <EditText
+                android:layout_width="340dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/edt_others"
+                android:text="hello"
+                android:singleLine="true"
+                android:layout_below="@+id/linearlayout_04"
+                android:visibility="visible"
+                android:layout_weight="0.5"/>
         </RelativeLayout>
     </ScrollView>
-
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/btnChangeDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="customDatePicker_click"
-        android:text="Choose Date" />
+        android:text="Change Date" />
 
     <TextView
-        android:id="@+id/textResult"
+        android:id="@+id/tvDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/button1"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/button1"
-        android:text="Choosen Date" />
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textResult"
-        android:layout_toRightOf="@+id/button1"
-        android:text="Other Format" />
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <com.youngindia.jobportal.fonts.Roboto_Regular_Button
         android:layout_width="match_parent"

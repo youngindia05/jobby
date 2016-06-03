@@ -9,104 +9,70 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/scrollview1"
+        android:padding="16dp"
         android:layout_gravity="center_horizontal|bottom">
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="16dp">
+            android:layout_height="match_parent">
             <com.youngindia.jobportal.fonts.Roboto_Regular
-                android:id="@+id/txt_higerEduction"
+                android:id="@+id/txt_keyskill"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/higher_education"
+                android:text="@string/key_skill"
                 android:textColor="@color/textColorPrimary"
-                android:layout_weight="1"
                 android:textSize="@dimen/lbl_txtsize"/>
             <EditText
-                android:id="@+id/hightEducation_ED"
+                android:id="@+id/edt_keySkills"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/edt_height_normal"
                 android:background="@color/color_transparent"
-                android:layout_weight="2"
                 android:layout_marginBottom="@dimen/mrgin_btwn_edtText"
-                android:layout_below="@+id/txt_higerEduction"
+                android:layout_below="@+id/txt_keyskill"
                 android:textSize="@dimen/lbl_txtsize"
                 android:singleLine="true" />
             <com.youngindia.jobportal.fonts.Roboto_Regular
-                android:id="@+id/txt_specilization"
+                android:id="@+id/txt_curent_company"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/specilization"
+                android:text="@string/current_company"
                 android:textColor="@color/textColorPrimary"
-                android:layout_weight="1"
-                android:layout_below="@id/hightEducation_ED"
+                android:layout_below="@id/edt_keySkills"
                 android:textSize="@dimen/lbl_txtsize"/>
             <EditText
-                android:id="@+id/specilization_ED"
+                android:id="@+id/edt_curent_company"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/edt_height_normal"
                 android:background="@color/color_transparent"
-                android:layout_weight="2"
                 android:layout_marginBottom="13dp"
-                android:layout_below="@+id/txt_specilization"
+                android:layout_below="@+id/txt_curent_company"
                 android:textSize="@dimen/lbl_txtsize"
                 android:singleLine="true"/>
             <com.youngindia.jobportal.fonts.Roboto_Regular
-                android:id="@+id/txt_university"
+                android:id="@+id/txt_curent_company_role"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/university"
+                android:text="@string/company_role"
                 android:textColor="@color/textColorPrimary"
-                android:layout_weight="1"
-                android:layout_below="@id/specilization_ED"
+                android:layout_below="@id/edt_curent_company"
                 android:textSize="@dimen/lbl_txtsize"/>
             <EditText
-                android:id="@+id/university_ED"
+                android:id="@+id/edt_curent_company_role"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/edt_height_normal"
                 android:background="@color/color_transparent"
-                android:layout_weight="2"
-                android:layout_below="@+id/txt_university"
+                android:layout_below="@+id/txt_curent_company_role"
                 android:textSize="@dimen/lbl_txtsize"
                 android:singleLine="true"
                 android:layout_marginBottom="13dp"/>
-            <com.youngindia.jobportal.fonts.Roboto_Regular
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/textColorPrimary"
-                android:layout_weight="1"
-                android:textSize="@dimen/lbl_txtsize"
-                android:id="@+id/tv_yearOfPassOut"
-                android:text="Passed Year"
-                android:layout_below="@id/university_ED"/>
-            <LinearLayout
-                android:id="@+id/linerlayout_year"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@drawable/spinner_shape"
-                android:layout_below="@+id/tv_yearOfPassOut"
-                android:weightSum="1"
-                android:layout_marginBottom="13dp">
-                <Spinner
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/spinner_yearOFpassed"
-                    android:entries="@array/year_name"
-                    android:prompt="@string/year"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:contextClickable="true"/>
-            </LinearLayout>
+
             <com.youngindia.jobportal.fonts.Roboto_Regular
                 android:textColor="@color/textColorPrimary"
-                android:layout_weight="1"
                 android:id="@+id/tv_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Location"
-                android:textSize="@dimen/lbl_txtsize"
-                android:layout_below="@id/linerlayout_year"/>
+                android:text="@string/location_perfer"
+                android:layout_below="@+id/edt_curent_company_role"
+                android:textSize="@dimen/lbl_txtsize"/>
             <LinearLayout
                 android:id="@+id/linearlayout_location"
                 android:layout_width="match_parent"
@@ -127,7 +93,6 @@
             </LinearLayout>
             <com.youngindia.jobportal.fonts.Roboto_Regular
                 android:textColor="@color/textColorPrimary"
-                android:layout_weight="1"
                 android:id="@+id/tv_industry"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -139,6 +104,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:id="@+id/linearlayout_04"
+                android:layout_marginBottom="@dimen/mrgin_btwn_edtText"
                 android:background="@drawable/spinner_shape"
                 android:layout_below="@+id/tv_industry"
                 android:weightSum="1">
@@ -154,18 +120,63 @@
                     android:layout_alignParentStart="true"
                     android:layout_weight="0.5">
                 </Spinner>
-                <TextView
-                    android:layout_width="340dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/edt_others"
-                    android:text="hello"
-                    android:singleLine="true"
-                    android:visibility="invisible"
-                    android:layout_weight="0.5"/>
             </LinearLayout>
-        </RelativeLayout>
-    </ScrollView>
+            <com.youngindia.jobportal.fonts.Roboto_Regular
+                android:textColor="@color/textColorPrimary"
+                android:layout_weight="1"
+                android:textSize="@dimen/lbl_txtsize"
+                android:text="@string/total_experecnce"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linearlayout_04"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/experience_TV"/>
+            <SeekBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/seekBar_Experience"
+                android:max="50"
+                android:indeterminate="false"
+                android:layout_below="@+id/experience_TV"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textProgress"
+                android:layout_below="@+id/seekBar_Experience"
+                />
+            <com.youngindia.jobportal.fonts.Roboto_Regular
+                android:textColor="@color/textColorPrimary"
+                android:layout_weight="1"
+                android:textSize="@dimen/lbl_txtsize"
+                android:text="@string/expected_slry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/expectedSalary_TV"
+                android:layout_below="@+id/textProgress"/>
+            <SeekBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/seekBar_ExpectedSalary"
+                android:max="20000"
+                android:progress="@integer/abc_config_activityDefaultDur"
+                android:indeterminate="false"
+                android:layout_below="@+id/expectedSalary_TV"            />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textProgressSalry"
+                android:layout_below="@+id/seekBar_ExpectedSalary"
+                android:layout_marginBottom="@dimen/mrgin_btwn_edtText"/>
 
+
+
+        </RelativeLayout>
+
+    </ScrollView>
     <com.youngindia.jobportal.fonts.Roboto_Regular_Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

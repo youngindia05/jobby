@@ -18,6 +18,7 @@ public class Employee_RegistrationActivity extends AppCompatActivity {
     Button btn_save;
     fragment_emp_regitin fragment_emp_regitin1;
     fragmnet_emp_reg2 fragmnet_emp_reg2;
+    fragment_employee_registration fragment_employee_registration;
     Toolbar toolbar;
     private final static String FRAGMENT_TAG = "FRAGMENTB_TAG";
     /**
@@ -52,11 +53,13 @@ public class Employee_RegistrationActivity extends AppCompatActivity {
 //        });
         fragmnet_emp_reg2 = new fragmnet_emp_reg2();
         fragment_emp_regitin1 = new fragment_emp_regitin();
-        ;
+
+        fragment_employee_registration=new fragment_employee_registration();
+
 
         FragmentTransaction fragmenttransaction = getSupportFragmentManager().beginTransaction();
         //   sScreen = getResources().getString(R.string.title_wall);
-        fragmenttransaction.replace(R.id.frame_container1, fragment_emp_regitin1, FRAGMENT_TAG);
+        fragmenttransaction.replace(R.id.frame_container1,fragment_employee_registration, FRAGMENT_TAG);
      /*   MyFragment myFragment = (MyFragment)getFragmentManager().findFragmentByTag(FRAGMENT_TAG);
         if (myFragment != null && myFragment.isVisible()) {
             // add your code here

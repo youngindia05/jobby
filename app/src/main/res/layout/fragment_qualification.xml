@@ -1,0 +1,289 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.youngindia.jobportal.ui.fragment_qualification">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/padding_layout"
+        android:layout_marginTop="20dp"
+        android:background="@color/backgd_light_blue" >
+     <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"  >
+             <!--TextView and Edit Txt in Graducation part-->
+         <LinearLayout
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:orientation="vertical"
+                 android:layout_marginTop="5dp"
+                 android:id="@+id/linearlayout_graducation">
+                 <TextView
+                     android:layout_width="256dp"
+                     android:layout_height="wrap_content"
+                     android:text="@string/graducation"
+                     android:id="@+id/txt_graducation" />
+                 <EditText
+                     android:id="@+id/edt_graducation_name"
+                     android:layout_width="match_parent"
+                     android:background="@drawable/spinner_shape"
+                     android:layout_height="wrap_content"/>
+                        <!--Graducation Year-->
+            <LinearLayout
+                 android:layout_width="311dp"
+                 android:layout_height="wrap_content"
+                 android:orientation="horizontal"
+                 android:weightSum="2">
+              <LinearLayout
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_weight="1"
+                     android:layout_marginTop="5dp"
+                     android:orientation="vertical">
+                     <TextView
+                     android:layout_width="135dp"
+                     android:layout_height="wrap_content"
+                     android:text="@string/year"
+                     android:id="@+id/txt_year"/>
+                     <EditText
+                         android:id="@+id/edt_graducation_year"
+                         android:layout_width="98dp"
+                         android:background="@drawable/spinner_shape"
+                         android:layout_height="wrap_content"/>
+              </LinearLayout>
+                     <!--Percentage in Graducation-->
+                <LinearLayout
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_weight="1"
+                         android:layout_marginTop="5dp"
+                         android:orientation="vertical">
+                         <TextView
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:text="@string/percentage"
+                             android:id="@+id/txt_percentage"/>
+                         <EditText
+                             android:id="@+id/edt_graducation_perctage"
+                             android:layout_width="match_parent"
+                             android:background="@drawable/spinner_shape"
+                             android:layout_height="wrap_content"/>
+                     </LinearLayout>
+                 </LinearLayout>
+             </LinearLayout>
+
+             <!--Secondary Education-->
+
+                 <!--TextView and Edit Txt in Graducation part-->
+         <LinearLayout
+                     android:id="@+id/linearlayout_12th"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:orientation="vertical"
+                     android:layout_below="@+id/linearlayout_graducation"
+                     android:layout_marginTop="10dp">
+                     <TextView
+                         android:layout_width="256dp"
+                         android:layout_height="wrap_content"
+                         android:text="@string/twelv"
+                         android:id="@+id/txt_12th" />
+                     <EditText
+                         android:id="@+id/edt_12th"
+                         android:layout_width="match_parent"
+                         android:background="@drawable/spinner_shape"
+                         android:layout_height="wrap_content"/>
+                     <!--12th Year-->
+             <LinearLayout
+                         android:layout_width="311dp"
+                         android:layout_height="wrap_content"
+                         android:orientation="horizontal"
+                         android:weightSum="2">
+                 <LinearLayout
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:layout_weight="1"
+                             android:layout_marginTop="5dp"
+                             android:orientation="vertical">
+                             <TextView
+                                 android:layout_width="135dp"
+                                 android:layout_height="wrap_content"
+                                 android:text="@string/year"
+                                 android:id="@+id/txt_year_12th"/>
+                             <EditText
+                                 android:id="@+id/edt_12th_year"
+                                 android:layout_width="98dp"
+                                 android:background="@drawable/spinner_shape"
+                                 android:layout_height="wrap_content"/>
+                 </LinearLayout>
+                         <!--Percentage in 12th-->
+                            <LinearLayout
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:layout_weight="1"
+                             android:layout_marginTop="5dp"
+
+                             android:orientation="vertical">
+                             <TextView
+                                 android:layout_width="match_parent"
+                                 android:layout_height="wrap_content"
+                                 android:text="@string/percentage"
+                                 android:id="@+id/txt_percentage_12th"/>
+                             <EditText
+                                 android:id="@+id/edt_12th_percntage"
+                                 android:layout_width="match_parent"
+                                 android:background="@drawable/spinner_shape"
+                                 android:layout_height="wrap_content"/>
+                         </LinearLayout>
+                     </LinearLayout>
+
+                 </LinearLayout>
+
+<!--End of the 12th Education-->
+         <!--10th Detail-->
+
+         <!--TextView and Edit Txt in Graducation part-->
+         <LinearLayout
+             android:id="@+id/linearlayout_10th"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:orientation="vertical"
+             android:layout_below="@+id/linearlayout_12th"
+             android:layout_marginTop="10dp">
+             <TextView
+                 android:layout_width="256dp"
+                 android:layout_height="wrap_content"
+                 android:text="@string/tenth"
+                 android:id="@+id/txt_10th" />
+             <EditText
+                 android:id="@+id/edt_10th"
+                 android:layout_width="match_parent"
+                 android:background="@drawable/spinner_shape"
+                 android:layout_height="wrap_content"/>
+             <!--10th Year-->
+             <LinearLayout
+                 android:layout_width="311dp"
+                 android:layout_height="wrap_content"
+                 android:orientation="horizontal"
+                 android:weightSum="2">
+                 <LinearLayout
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_weight="1"
+                     android:layout_marginTop="5dp"
+                     android:orientation="vertical">
+                     <TextView
+                         android:layout_width="135dp"
+                         android:layout_height="wrap_content"
+                         android:text="@string/year"
+                         android:id="@+id/txt_year_10th"/>
+                     <EditText
+                         android:id="@+id/edt_10th_year"
+                         android:layout_width="98dp"
+                         android:background="@drawable/spinner_shape"
+                         android:layout_height="wrap_content"/>
+                 </LinearLayout>
+                 <!--Percentage in 10th-->
+                 <LinearLayout
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_weight="1"
+                     android:layout_marginTop="5dp"
+
+                     android:orientation="vertical">
+                     <TextView
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:text="@string/percentage"
+                         android:id="@+id/txt_percentage_10th"/>
+                     <EditText
+                         android:layout_width="match_parent"
+                         android:id="@+id/edt_10th_percentage"
+                         android:background="@drawable/spinner_shape"
+                         android:layout_height="wrap_content"/>
+                 </LinearLayout>
+             </LinearLayout>
+
+         </LinearLayout>
+
+            <!--Others-->
+        <!--TextView and Edit Txt in Graducation part-->
+         <LinearLayout
+             android:id="@+id/linearlayout_others"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:orientation="vertical"
+             android:layout_below="@+id/linearlayout_10th"
+             android:layout_marginTop="10dp">
+             <TextView
+                 android:layout_width="256dp"
+                 android:layout_height="wrap_content"
+                 android:text="@string/others"
+                 android:id="@+id/txt_others" />
+             <EditText
+                 android:id="@+id/edt_others"
+                 android:layout_width="match_parent"
+                 android:background="@drawable/spinner_shape"
+                 android:layout_height="wrap_content"/>
+             <!--others Year-->
+             <LinearLayout
+                 android:layout_width="311dp"
+                 android:layout_height="wrap_content"
+                 android:orientation="horizontal"
+                 android:weightSum="2">
+                 <LinearLayout
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_weight="1"
+                     android:layout_marginTop="5dp"
+                     android:orientation="vertical">
+                     <TextView
+                         android:layout_width="135dp"
+                         android:layout_height="wrap_content"
+                         android:text="@string/year"
+                         android:id="@+id/txt_ye_others"/>
+                     <EditText
+                         android:id="@+id/edt_others_year"
+                         android:layout_width="98dp"
+                         android:background="@drawable/spinner_shape"
+                         android:layout_height="wrap_content"/>
+                 </LinearLayout>
+                 <!--Percentage in others-->
+                 <LinearLayout
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_weight="1"
+                     android:layout_marginTop="5dp"
+
+                     android:orientation="vertical">
+                     <TextView
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:text="@string/percentage"
+                         android:id="@+id/txt_percentage_others"/>
+                     <EditText
+                         android:layout_width="match_parent"
+                         android:id="@+id/edt_others_percentage"
+                         android:background="@drawable/spinner_shape"
+                         android:layout_height="wrap_content"/>
+                 </LinearLayout>
+             </LinearLayout>
+
+         </LinearLayout>
+
+<!--End of others education-->
+     </RelativeLayout>
+
+    </ScrollView>
+   <com.youngindia.jobportal.fonts.Roboto_Regular_Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/nxtbtn"
+        android:text="Next"
+        android:textSize="@dimen/btn_txtsize"
+        android:background="@drawable/btnshape"
+        android:textColor="@color/btn_textColor"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center_horizontal|bottom" />
+</FrameLayout>

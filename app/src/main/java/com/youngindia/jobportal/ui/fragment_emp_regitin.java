@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 
 import android.widget.EditText;
+import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -22,15 +23,7 @@ import android.widget.Toast;
 
 import com.youngindia.jobportal.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link fragment_emp_regitin.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link fragment_emp_regitin#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class fragment_emp_regitin extends Fragment {
+public class fragment_emp_regitin extends Fragment implements SeekBar.OnSeekBarChangeListener{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -40,6 +33,8 @@ public class fragment_emp_regitin extends Fragment {
     Spinner spinner_industry;
     TextView edt_other;
 
+    SeekBar seekBar_experience, seekBar_expected_salry;
+    TextView textViewProgress,textView_expectedSalry;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -92,6 +87,13 @@ public class fragment_emp_regitin extends Fragment {
             edt_other.setVisibility(View.VISIBLE);
         }
 
+        seekBar_expected_salry= (SeekBar) rootview.findViewById(R.id.seekBar_ExpectedSalary);
+        textView_expectedSalry= (TextView)rootview.findViewById(R.id.textProgressSalry);
+
+        seekBar_experience= (SeekBar) rootview.findViewById(R.id.seekBar_Experience);
+        seekBar_experience.setOnSeekBarChangeListener((SeekBar.OnSeekBarChangeListener) this);
+        seekBar_expected_salry.setOnSeekBarChangeListener((SeekBar.OnSeekBarChangeListener) this);
+        textViewProgress = (TextView)rootview.findViewById(R.id.textProgress);
 
         nxtbtn=(Button)rootview.findViewById(R.id.btn);
         nxtbtn.setOnClickListener(new View.OnClickListener() {
@@ -103,7 +105,7 @@ public class fragment_emp_regitin extends Fragment {
                 //   sScreen = getResources().getString(R.string.title_wall);
                 fragmenttransaction.replace(R.id.frame_container1, fragmnet_emp_reg2);
                 fragmenttransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                fragmenttransaction.addToBackStack( "tag" ).commit();
+                fragmenttransaction.addToBackStack( "tag0" ).commit();
             }
         });
         // Inflate the layout for this fragment
@@ -128,16 +130,23 @@ public class fragment_emp_regitin extends Fragment {
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
+    @Override
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+        if (seekBar == seekBar_experience) {
+            textViewProgress.setText("Your Experience is :  " + progress);
+        } else {
+            textView_expectedSalry.setText("Your Expected Salary is:" + progress);
+        }
+
+    }
+        public void onStartTrackingTouch (SeekBar seekBar){
+
+        }
+
+    public void onStopTrackingTouch(SeekBar seekBar) {
+        seekBar.setSecondaryProgress(seekBar.getProgress());
+
+    }
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);

@@ -2,9 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="16dp"
-    android:paddingLeft="24dp"
-    android:paddingRight="24dp"
+    android:padding="16dp"
+    android:layout_marginTop="20dp"
     android:background="@color/backgd_light_blue">
     <com.youngindia.jobportal.fonts.Roboto_Regular
         android:id="@+id/txt_designation"
@@ -12,13 +11,11 @@
         android:layout_height="wrap_content"
         android:text="@string/designation"
         android:textColor="@color/textColorPrimary"
-        android:layout_weight="1"
         android:textSize="@dimen/lbl_txtsize"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="@dimen/edt_height_normal"
         android:background="@color/color_transparent"
-        android:layout_weight="2"
         android:layout_marginBottom="@dimen/mrgin_btwn_edtText"
         android:singleLine="true"
         android:hint="@string/hint_desgntion"
@@ -30,7 +27,6 @@
         android:layout_height="wrap_content"
         android:text="@string/qualification"
         android:textColor="@color/textColorPrimary"
-        android:layout_weight="1"
         android:layout_below="@id/autocompleteEditTextView"
         android:textSize="@dimen/lbl_txtsize"/>
     <LinearLayout

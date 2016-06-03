@@ -1,14 +1,20 @@
 package com.youngindia.jobportal.ui;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
@@ -20,6 +26,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.youngindia.jobportal.R;
+import com.youngindia.jobportal.adapter.Dialog_Advertisement;
 import com.youngindia.jobportal.database.SessionManager;
 import com.youngindia.jobportal.database.SqliteHandler;
 import com.youngindia.jobportal.model.DefaultDialog;
@@ -43,7 +50,12 @@ public class LoginUser_Activity extends AppCompatActivity {
     String status="Iscandidat";
     AppController mInstance;
     SegmentedGroup segmented2;
+
     TextView txt_forgetpsw,txt_createAccount;
+
+    TextView txt_forgetpsw,txt_registration;
+    int SPLASH_TIME_OUT=5000;
+
     private static final String TAG = LoginUser_Activity.class.getSimpleName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +83,10 @@ public class LoginUser_Activity extends AppCompatActivity {
 
         }
 
+
+        txt_registration=(TextView) findViewById(R.id.txt_newuserregistraation);
+        Dialog_Advertisement showAdvertisment=new Dialog_Advertisement();
+        showAdvertisment.showDialog(this,"I am happy.",R.drawable.profile_pic);
         txt_forgetpsw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,20 +94,20 @@ public class LoginUser_Activity extends AppCompatActivity {
                 dialog.showDialog(LoginUser_Activity.this,"Please Enter your mobile number here to get new credentials.");
             }
         });
-       // segmented2.setTintColor(Color.DKGRAY);
-       // segmented2.setTintColor(Color.parseColor("#FFD0FF3C"), Color.parseColor("#FF7B07B2"));
-        //segmented2.setTintColor(getResources().getColor(R.color.colorPrimaryDark));
         segmented2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if(checkedId==R.id.button21) {
                     status="Iscandidat";
-                  //  Toast.makeText(registrationActivity.this, "Cecked_id is Employee" + checkedId, Toast.LENGTH_LONG).show();
+                    edt_username.setText("");
+                    edt_password.setText("");
+                    txt_registration.setText("New User Registration Here!!!!");
                 }else
                 {
-                    //Toast.makeText(registrationActivity.this, "Cecked_id is Employer" + checkedId, Toast.LENGTH_LONG).show();
                     status="Iscompany";
-
+                    edt_username.setText("");
+                    edt_password.setText("");
+                    txt_registration.setText("New Employer/Company Registration Here!!!!");
                 }
                 if (checkedId==R.id.button33)
                 {
@@ -100,17 +116,15 @@ public class LoginUser_Activity extends AppCompatActivity {
                     startActivity(intent);
 
                 }
+                if (checkedId==R.id.button44)
+                {
+                    status="IsFranchis";
+                    edt_username.setText("");
+                    edt_password.setText("");
+                    txt_registration.setText("");
+                }
             }
         });
-
-//        SegmentedGroup segmented3 = (SegmentedGroup)findViewById(R.id.segmented3);
-//        segmented3.setTintColor(Color.parseColor("#FFD0FF3C"), Color.parseColor("#FF7B07B2"));
-//
-//        SegmentedGroup segmented4 = (SegmentedGroup)findViewById(R.id.segmented4);
-//        segmented4.setTintColor(getResources().getColor(R.color.radio_button_selected_color));
-        // Progress dialog
-//        ProgressDialog pDialog = new ProgressDialog(this);
-//        pDialog.setCancelable(false);
 
         // SQLite database handler
         db = new SqliteHandler(getApplicationContext());
@@ -174,19 +188,19 @@ public class LoginUser_Activity extends AppCompatActivity {
                     if (!error) {
 //                         user successfully logged in
 //                         Create login session
-                       /* session.setLogin(true);
+                       // session.setLogin(true);
 
-                        // Now store the user in SQLite
-                        String uid = jObj.optString("uid");
-
-                        JSONObject user = jObj.getJSONObject("user");
-                        String name = user.optString("name");
-                        String email = user.optString("email");
-                        String created_at = user
-                                .optString("created_at");
-
-                        // Inserting row in users table
-                        db.addUser(name, email,password, uid, created_at);*/
+//                        // Now store the user in SQLite
+//                        String uid = jObj.optString("uid");
+//
+//                        JSONObject user = jObj.getJSONObject("user");
+//                        String name = user.optString("name");
+//                        String email = user.optString("email");
+//                        String created_at = user
+//                                .optString("created_at");
+//
+//                        // Inserting row in users table
+//                        db.addUser(name, email,password, uid, created_at);
 
                          //Launch main activity
                         String value=jObj.getString("status");
@@ -204,6 +218,13 @@ public class LoginUser_Activity extends AppCompatActivity {
                                     Company_Base.class);
                             startActivity(intent);
 
+                        }
+                        if(status.equals("IsFranchis"))
+                        {
+                            Intent intent = new Intent(LoginUser_Activity.this,
+                                    Franchise_Activity.class);
+                            startActivity(intent);
+                            finish();
                         }
                     } else {
                         // Error in login. Get the error message

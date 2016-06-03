@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#0099cc"
+    tools:context="com.youngindia.jobportal.ui.Franchise_Activity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:id="@+id/view">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/listview_idslist"
+        android:layout_below="@+id/view">
+
+    </ListView>
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="vertical"-->
+        <!--android:weightSum="4"-->
+        <!--android:id="@+id/LinearLayout_userlogin"-->
+        <!--android:paddingTop="@dimen/fab_margin">-->
+        <!--<com.youngindia.jobportal.fonts.Roboto_Regular-->
+            <!--android:id="@+id/txt_francisename"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/username"-->
+            <!--android:textColor="@color/btn_textColor"-->
+            <!--android:layout_marginTop="@dimen/fab_margin"-->
+            <!--android:layout_weight="1"-->
+            <!--android:textSize="@dimen/lbl_txtsize"/>-->
+        <!--<EditText-->
+            <!--android:id="@+id/edt_francisename"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="@dimen/edt_height"-->
+            <!--android:background="@color/btn_textColor"-->
+            <!--android:layout_weight="2"-->
+            <!--android:layout_marginTop="@dimen/fab_margin"-->
+            <!--android:textSize="@dimen/lbl_txtsize"-->
+            <!--android:singleLine="true"/>-->
+        <!--<com.youngindia.jobportal.fonts.Roboto_Regular-->
+            <!--android:id="@+id/txt_francisepsw"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/txt_psw"-->
+            <!--android:layout_weight="3"-->
+            <!--android:textColor="@color/btn_textColor"-->
+            <!--android:layout_marginTop="@dimen/fab_margin"-->
+            <!--android:textSize="@dimen/lbl_txtsize"/>-->
+        <!--<EditText-->
+            <!--android:id="@+id/edt_password"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="@dimen/edt_height"-->
+            <!--android:background="@color/btn_textColor"-->
+            <!--android:layout_weight="4"-->
+            <!--android:layout_marginTop="@dimen/fab_margin"-->
+            <!--android:singleLine="true"-->
+            <!--android:maxLength="10"-->
+            <!--android:inputType="number"-->
+            <!--/>-->
+        <!--<com.youngindia.jobportal.fonts.Roboto_Regular_Button-->
+            <!--android:id="@+id/btn_login"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/btn_login"-->
+            <!--android:layout_marginTop="@dimen/btn_logintopmargin"-->
+            <!--android:background="@drawable/btnshape"-->
+            <!--android:textSize="@dimen/btn_txtsize"-->
+            <!--android:textColor="@color/btn_textColor"/>-->
+        <!--<TextView-->
+            <!--android:id="@+id/txt_forget_psw"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textColor="@color/colorAccent"-->
+            <!--android:text="Forget Password ?"-->
+            <!--android:layout_marginTop="@dimen/activity_horizontal_margin" />-->
+        <!--<TextView-->
+            <!--android:id="@+id/txt_newuserregistraation"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textColor="@color/colorAccent"-->
+            <!--android:text="New Franchise Registration Here!!!!"-->
+            <!--android:layout_marginTop="@dimen/activity_horizontal_margin" />-->
+    <!--</LinearLayout>-->
+
+    <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:orientation="vertical"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_marginTop="10dp"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_below="@+id/LinearLayout_userlogin">&ndash;&gt;-->
+        <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:text="Franchise user Registration here!!!!"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:textColor="@color/btn_textColor"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:textColor="@color/btn_textColor"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:text="Please select your Franchise name here."/>&ndash;&gt;-->
+        <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+            <!--&lt;!&ndash;android:id="@+id/linearlayout_location"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:orientation="horizontal"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:background="@drawable/spinner_shape"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:weightSum="1"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginBottom="13dp">&ndash;&gt;-->
+            <!--&lt;!&ndash;<Spinner&ndash;&gt;-->
+                <!--&lt;!&ndash;android:id="@+id/spinner_location"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:entries="@array/franchise_array"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:prompt="@string/location"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:contextClickable="true"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:textColor="@color/textColorPrimary"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+
+        <!--&lt;!&ndash;<com.youngindia.jobportal.fonts.Roboto_Regular_Button&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:text="Register"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:background="@drawable/btnshape"/>&ndash;&gt;-->
+    <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+
+
+</RelativeLayout>

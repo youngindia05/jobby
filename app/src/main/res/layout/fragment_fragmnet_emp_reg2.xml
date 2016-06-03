@@ -8,7 +8,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="@dimen/padding_layout"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="20dp"
+        android:id="@+id/scrollview01">
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -85,11 +86,30 @@
                 android:textColor="@color/textColorPrimary"/>
         </LinearLayout>
 
-        <com.youngindia.jobportal.fonts.Roboto_Regular
-            android:textColor="@color/textColorPrimary"
-            android:id="@+id/tv_physically_challeged"
+        <!--<com.youngindia.jobportal.fonts.Roboto_Regular-->
+            <!--android:textColor="@color/textColorPrimary"-->
+            <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
+            <!--android:id="@+id/experience_TV"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content" />-->
+        <!--<EditText-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/experience_TV"-->
+            <!--android:id="@+id/edit_experience"/>-->
+        <!--<SeekBar-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/seekBar_Experience"-->
+            <!--android:max="50"-->
+            <!--android:indeterminate="false"-->
+            <!--android:layout_below="@+id/edit_experience"-->
+            <!--android:layout_alignParentLeft="true"-->
+            <!--android:layout_alignParentStart="true" />-->
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/tv_physically_challeged"
             android:text="@string/physically_challeged"
             android:layout_below="@id/linearlayout_category"
             android:textSize="@dimen/lbl_txtsize"/>
@@ -182,17 +202,16 @@
             android:layout_below="@id/edt_sponsored_field_detailed"
             android:textSize="@dimen/lbl_txtsize"/>
 
-
-        <com.youngindia.jobportal.fonts.Roboto_Regular_Button
+    </RelativeLayout>
+    </ScrollView>
+    <com.youngindia.jobportal.fonts.Roboto_Regular_Button
             android:layout_width="wrap_content"
             android:layout_height="@dimen/edt_height_normal"
             android:id="@+id/btn_upload"
             android:text="Upload Resume"
             android:background="@drawable/btnshape"
-            android:textColor="@color/btn_textColor"
-            android:layout_marginBottom="@dimen/mrgin_btwn_edtText"
-            android:layout_below="@+id/txt_imgae_upload_link"
-            android:layout_centerHorizontal="true" />
+            android:textColor="@color/btn_textColor"/>
+
         <com.youngindia.jobportal.fonts.Roboto_Regular_Button
             android:layout_width="match_parent"
             android:layout_height="@dimen/edt_height_normal"
@@ -202,8 +221,4 @@
             android:textColor="@color/btn_textColor"
             android:background="@drawable/btnshape"
             android:textSize="@dimen/btn_txtsize" />
-    </RelativeLayout>
-
-    </ScrollView>
-
 </FrameLayout>

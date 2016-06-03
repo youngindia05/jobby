@@ -121,6 +121,15 @@
                     android:layout_weight="0.5">
                 </Spinner>
             </LinearLayout>
+            <EditText
+                android:layout_width="340dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/edt_others"
+                android:text="hello"
+                android:singleLine="true"
+                android:layout_below="@+id/linearlayout_04"
+                android:visibility="visible"
+                android:layout_weight="0.5"/>
             <com.youngindia.jobportal.fonts.Roboto_Regular
                 android:textColor="@color/textColorPrimary"
                 android:layout_weight="1"
@@ -129,7 +138,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/linearlayout_04"
+                android:layout_below="@+id/edt_others"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:id="@+id/experience_TV"/>
             <SeekBar
@@ -173,10 +182,20 @@
                 android:layout_marginBottom="@dimen/mrgin_btwn_edtText"/>
 
 
+    <Button
+        android:id="@+id/btnChangeDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Change Date" />
 
-        </RelativeLayout>
-
-    </ScrollView>
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    </RelativeLayout>
+</ScrollView>
     <com.youngindia.jobportal.fonts.Roboto_Regular_Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -169,7 +169,7 @@ public class fragment_emp_regitin extends Fragment {
                 session = new SessionManager(getActivity().getApplicationContext());
                 HashMap<String, String> user1=session.getUsername();
                 String username = user1.get(SessionManager.KEY_NAME);
-                if (!highEducation.isEmpty() && !specialization.isEmpty() && !university.isEmpty() && !passedYear.isEmpty()
+              /*  if (!highEducation.isEmpty() && !specialization.isEmpty() && !university.isEmpty() && !passedYear.isEmpty()
                         && !location.isEmpty() && !industry.isEmpty() && !username.isEmpty()) {
 
                     registerUser(highEducation, specialization, university, passedYear,location,industry,username);
@@ -177,14 +177,14 @@ public class fragment_emp_regitin extends Fragment {
                     Toast.makeText(getActivity().getApplicationContext(),
                             "Please enter your details!", Toast.LENGTH_LONG)
                             .show();
-                }
-              /*  fragmnet_emp_reg2 fragmnet_emp_reg2=new fragmnet_emp_reg2();
+                }*/
+                fragmnet_emp_reg2 fragmnet_emp_reg2=new fragmnet_emp_reg2();
 
                 FragmentTransaction fragmenttransaction = employee_registrationActivity.getSupportFragmentManager().beginTransaction();
                 //   sScreen = getResources().getString(R.string.title_wall);
                 fragmenttransaction.replace(R.id.frame_container1, fragmnet_emp_reg2);
                 fragmenttransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                fragmenttransaction.addToBackStack( "tag" ).commit();*/
+                fragmenttransaction.addToBackStack( "tag" ).commit();
             }
         });
         // Inflate the layout for this fragment

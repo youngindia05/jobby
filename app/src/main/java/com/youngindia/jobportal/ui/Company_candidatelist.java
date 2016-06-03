@@ -19,6 +19,8 @@ public class Company_candidatelist extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_company_candidatelist);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("ShortList Candidate");
+        toolbar.setNavigationIcon(R.drawable.toolbar_backbtn);
         setSupportActionBar(toolbar);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText("Shortlisted Candidate"));

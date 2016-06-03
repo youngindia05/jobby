@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
@@ -35,11 +36,13 @@
         <activity
             android:name=".ui.Search_Activity"
             android:label="@string/title_activity_search_"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".ui.Company_Base"/>
         <activity
             android:name=".ui.Search_Result"
             android:label="@string/title_activity_search__result"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".ui.Search_Activity"/>
         <activity
             android:name=".ui.Company_Base"
             android:label="@string/title_activity_company__base"
@@ -47,20 +50,24 @@
         <activity
             android:name=".ui.App_Faq"
             android:label="@string/title_activity_app__faq"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".ui.Employee_HomeActivity"/>
         <activity
             android:name=".ui.CompanyDetail"
             android:label="@string/title_activity_app__faq"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".ui.Company_Base"/>
         <activity
             android:name=".ui.Company_candidatelist"
             android:label="@string/title_activity_company_candidatelist"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".ui.Company_Base"/>
         <activity
             android:name=".ui.Details_Page"
             android:label="@string/title_activity_details__page"
             android:theme="@style/AppTheme" />
-        <activity android:name=".ui.DailyWagesRegstr" />
+        <activity android:name=".ui.DailyWagesRegstr"
+            android:parentActivityName=".ui.LoginUser_Activity"/>
         <activity android:name=".ui.Search_list_Activity" />
         <activity android:name=".ui.Main_Activity" />
         <activity android:name=".ui.Franchise_Activity"></activity>

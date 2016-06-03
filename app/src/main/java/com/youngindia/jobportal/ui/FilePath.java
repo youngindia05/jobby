@@ -1,9 +1,4 @@
 package com.youngindia.jobportal.ui;
-
-/**
- * Created by vamsi on 24-Feb-16.
- */
-
 import android.content.ContentUris;
 import android.content.Context;
 import android.database.Cursor;

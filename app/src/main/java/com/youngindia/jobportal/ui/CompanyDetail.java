@@ -22,7 +22,10 @@ public class CompanyDetail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_company_detail);
-
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Post a Job");
+        toolbar.setNavigationIcon(R.drawable.toolbar_backbtn);
+        setSupportActionBar(toolbar);
         spinner_minExp = (Spinner) findViewById(R.id.spinner1);
         spinner_maxExp = (Spinner) findViewById(R.id.spinner1);
 

@@ -46,7 +46,9 @@ public class Search_Result extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search__result);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setNavigationIcon(R.drawable.toolbar_backbtn);
         setSupportActionBar(toolbar);
+
         context=this;
         search_list=(ListView)findViewById(R.id.listView2);
         Intent myIntent = getIntent(); // gets the previously created intent

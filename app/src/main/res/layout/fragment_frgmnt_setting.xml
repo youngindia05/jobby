@@ -7,12 +7,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="16dp">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:id="@+id/imageView_chnagePic"
-            android:background="@drawable/default_pic"
-            android:layout_gravity="center_horizontal|top" />
+            android:src="@drawable/default_pic"
+
+
+            android:layout_gravity="center_horizontal|top"
+           />
         <com.youngindia.jobportal.fonts.Roboto_Regular
             android:id="@+id/tv_oldPassword"
             android:textColor="@color/textColorPrimary"

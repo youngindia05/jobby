@@ -1,10 +1,17 @@
 package com.youngindia.jobportal.ui;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +19,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +38,11 @@ import com.youngindia.jobportal.ui.app.AppController;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -45,11 +58,13 @@ public class LoginUser_Activity extends AppCompatActivity {
     AppController mInstance;
     SegmentedGroup segmented2;
     TextView txt_forgetpsw,txt_registration;
+
     private static final String TAG = LoginUser_Activity.class.getSimpleName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_user_);
+
         edt_username=(EditText)findViewById(R.id.edt_username);
         edt_password=(EditText)findViewById(R.id.edt_password);
 
@@ -108,7 +123,7 @@ public class LoginUser_Activity extends AppCompatActivity {
             // User is already logged in. Take him to main activity
             Intent intent = new Intent(LoginUser_Activity.this, Employee_HomeActivity.class);
             startActivity(intent);
-            finish();
+
         }
 
 
@@ -255,5 +270,6 @@ public class LoginUser_Activity extends AppCompatActivity {
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
+
 
 }

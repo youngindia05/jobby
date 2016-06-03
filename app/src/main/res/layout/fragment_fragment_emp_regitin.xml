@@ -2,108 +2,196 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.youngindia.jobportal.ui.fragment_emp_regitin">
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:context="com.youngindia.jobportal.ui.fragment_emp_regitin"
+    android:background="@color/backgd_light_blue">
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="475dp"
-        android:layout_gravity="left|bottom">
-        <android.support.design.widget.TextInputLayout android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollview1"
+        android:layout_gravity="center_horizontal|bottom">
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:id="@+id/view_higestEducation">
-            <com.youngindia.jobportal.fonts.Roboto_EditTextStyle
-                android:id="@+id/hightEducation_ED"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+            <com.youngindia.jobportal.fonts.Roboto_Regular
+                android:id="@+id/txt_higerEduction"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:layout_below="@+id/higesteducation_TV"
-                android:hint="Higest Education"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="20dp"/>
-        </android.support.design.widget.TextInputLayout>
-        <android.support.design.widget.TextInputLayout android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:id="@+id/view_specilization" android:layout_below="@+id/view_higestEducation">
+                android:text="@string/higher_education"
+                android:textColor="@color/textColorPrimary"
+                android:layout_weight="1"
+                android:textSize="@dimen/lbl_txtsize"/>
+            <EditText
+                android:id="@+id/hightEducation_ED"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edt_height_normal"
+                android:background="@color/color_transparent"
+                android:layout_weight="2"
+                android:layout_marginBottom="@dimen/mrgin_btwn_edtText"
+                android:layout_below="@+id/txt_higerEduction"
+                android:textSize="@dimen/lbl_txtsize"
+                android:singleLine="true" />
+            <com.youngindia.jobportal.fonts.Roboto_Regular
+                android:id="@+id/txt_specilization"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/specilization"
+                android:textColor="@color/textColorPrimary"
+                android:layout_weight="1"
+                android:layout_below="@id/hightEducation_ED"
+                android:textSize="@dimen/lbl_txtsize"/>
             <EditText
                 android:id="@+id/specilization_ED"
                 android:layout_width="match_parent"
+                android:layout_height="@dimen/edt_height_normal"
+                android:background="@color/color_transparent"
+                android:layout_weight="2"
+                android:layout_marginBottom="13dp"
+                android:layout_below="@+id/txt_specilization"
+                android:textSize="@dimen/lbl_txtsize"
+                android:singleLine="true"/>
+            <com.youngindia.jobportal.fonts.Roboto_Regular
+                android:id="@+id/txt_university"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Specilization"
-                android:textSize="20dp"
-                android:textAppearance="?android:attr/textAppearanceLarge"/>
-        </android.support.design.widget.TextInputLayout>
-        <android.support.design.widget.TextInputLayout android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:id="@+id/view_universityEductaion" android:layout_below="@+id/view_specilization">
+                android:text="@string/university"
+                android:textColor="@color/textColorPrimary"
+                android:layout_weight="1"
+                android:layout_below="@id/specilization_ED"
+                android:textSize="@dimen/lbl_txtsize"/>
             <EditText
                 android:id="@+id/university_ED"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="University/Institute"
-                android:textAppearance="?android:attr/textAppearanceLarge"/>
-        </android.support.design.widget.TextInputLayout>
-        <android.support.design.widget.TextInputLayout android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:id="@+id/view_yearOFpassout" android:layout_below="@+id/view_universityEductaion">
-            <EditText
-                android:id="@+id/year_ED"
+                android:layout_height="@dimen/edt_height_normal"
+                android:background="@color/color_transparent"
+                android:layout_weight="2"
+                android:layout_below="@+id/txt_university"
+                android:textSize="@dimen/lbl_txtsize"
+                android:singleLine="true"
+                android:layout_marginBottom="13dp"/>
+            <com.youngindia.jobportal.fonts.Roboto_Regular
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Year Of Passed"
-                android:textAppearance="?android:attr/textAppearanceLarge"/>
-        </android.support.design.widget.TextInputLayout>
+                android:textColor="@color/textColorPrimary"
+                android:layout_weight="1"
+                android:textSize="@dimen/lbl_txtsize"
+                android:id="@+id/tv_yearOfPassOut"
+                android:text="Passed Year"
+                android:layout_below="@id/university_ED"/>
+            <LinearLayout
+                android:id="@+id/linerlayout_year"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/spinner_shape"
+                android:layout_below="@+id/tv_yearOfPassOut"
+                android:weightSum="1"
+                android:layout_marginBottom="13dp">
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spinner_yearOFpassed"
+                    android:entries="@array/year_name"
+                    android:prompt="@string/year"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:contextClickable="true"/>
+            </LinearLayout>
+            <com.youngindia.jobportal.fonts.Roboto_Regular
+                android:textColor="@color/textColorPrimary"
+                android:layout_weight="1"
+                android:id="@+id/tv_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Location"
+                android:textSize="@dimen/lbl_txtsize"
+                android:layout_below="@id/linerlayout_year"/>
+            <LinearLayout
+                android:id="@+id/linearlayout_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/spinner_shape"
+                android:layout_below="@+id/tv_location"
+                android:weightSum="1"
+                android:layout_marginBottom="13dp">
+                <Spinner
+                    android:id="@+id/spinner_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/location_name"
+                    android:prompt="@string/location"
+                    android:contextClickable="true"
+                    android:textColor="@color/textColorPrimary"/>
+            </LinearLayout>
+            <com.youngindia.jobportal.fonts.Roboto_Regular
+                android:textColor="@color/textColorPrimary"
+                android:layout_weight="1"
+                android:id="@+id/tv_industry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Industry"
+                android:textSize="@dimen/lbl_txtsize"
+                android:layout_below="@id/linearlayout_location"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/linearlayout_04"
+                android:background="@drawable/spinner_shape"
+                android:layout_below="@+id/tv_industry"
+                android:weightSum="1">
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spinner_Industry"
+                    android:entries="@array/industry_name"
+                    android:prompt="@string/industry"
+                    android:contextClickable="true"
+                    android:textColor="@color/textColorPrimary"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_weight="0.5">
+                </Spinner>
+            </LinearLayout>
+            <EditText
+                android:layout_width="340dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/edt_others"
+                android:text="hello"
+                android:singleLine="true"
+                android:layout_below="@+id/linearlayout_04"
+                android:visibility="visible"
+                android:layout_weight="0.5"/>
+        </RelativeLayout>
+    </ScrollView>
+    <Button
+        android:id="@+id/btnChangeDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Change Date" />
 
-        <TextView
-            android:id="@+id/tv_location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Location"
-            android:layout_below="@id/view_yearOFpassout"/>
-        <Spinner
-            android:id="@+id/spinner_location"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:entries="@array/location_name"
-            android:prompt="@string/location"
-            android:layout_below="@+id/tv_location"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"/>
-        <TextView
-            android:id="@+id/tv_industry"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Industry"
-            android:layout_below="@id/spinner_location"/>
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/spinner_Industry"
-            android:entries="@array/industry_name"
-            android:prompt="@string/industry"
-            android:layout_below="@+id/tv_industry"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"/>
-        <TextView
-            android:layout_width="340dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/edt_others"
-            android:text="hello"
-            android:singleLine="true"
-            android:layout_below="@+id/spinner_Industry"
-            android:visibility="invisible"
-            android:layout_weight="0.5"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btn"
-            android:text="Next"
-            android:textColor="#F7F0FC"
-            android:textSize="20sp"
-            android:shadowColor="#A8A8A8"
-            android:shadowDx="0"
-            android:shadowDy="0"
-            android:shadowRadius="5"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
-    </RelativeLayout>
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
+    <com.youngindia.jobportal.fonts.Roboto_Regular_Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn"
+        android:text="Next"
+        android:textSize="@dimen/btn_txtsize"
+        android:background="@drawable/btnshape"
+        android:textColor="@color/btn_textColor"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/linearlayout_04"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center_horizontal|bottom" />
 </FrameLayout>

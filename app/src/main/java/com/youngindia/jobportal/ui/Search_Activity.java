@@ -45,7 +45,9 @@ public class Search_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_search_);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Search");
+        toolbar.setNavigationIcon(R.drawable.toolbar_backbtn);
         setSupportActionBar(toolbar);
+
         autoCompleteTextView= (EditText) findViewById(R.id.autocompleteEditTextView);
         qualification=(Spinner)findViewById(R.id.qualification);
         location=(Spinner)findViewById(R.id.location);

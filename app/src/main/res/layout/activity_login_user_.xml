@@ -127,5 +127,6 @@
                android:textColor="@color/colorAccent"
                android:text="New User Registration Here!!!!"
                android:layout_marginTop="@dimen/activity_horizontal_margin" />
+
     </LinearLayout>
   </RelativeLayout>

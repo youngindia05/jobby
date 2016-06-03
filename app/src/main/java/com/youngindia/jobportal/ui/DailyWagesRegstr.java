@@ -31,6 +31,7 @@ public class DailyWagesRegstr extends AppCompatActivity implements frgment_daily
         setContentView(R.layout.activity_daily_wages_regstr);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setTitle("Daily Wager");
+        toolbar.setNavigationIcon(R.drawable.toolbar_backbtn);
         setSupportActionBar(toolbar);
 
         radiobtn_register= (RadioButton) findViewById(R.id.radiobutn_register);

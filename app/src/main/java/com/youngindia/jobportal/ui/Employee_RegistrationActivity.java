@@ -62,7 +62,7 @@ public class Employee_RegistrationActivity extends AppCompatActivity {
             // add your code here
         }*/
         fragmenttransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-        fragmenttransaction.addToBackStack(null);
+       // fragmenttransaction.addToBackStack(null);
 
         //Fragment currentFragment = getActivity().getFragmentManager().findFragmentById(R.id.fragment_container);
         // fragmenttransaction.addToBackStack(FRAGMENT_TAG);

@@ -60,14 +60,14 @@ public class Company_Base extends AppCompatActivity  implements NavigationView.O
             //   sScreen = getResources().getString(R.string.title_wall);
             ft.replace(R.id.frame_container, fragment_companybase);
             ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-            ft.commitAllowingStateLoss();//commit();
+            ft.addToBackStack("tag").commitAllowingStateLoss();//commit();
             // Handle the camera action
         } else if (id == R.id.nav_setting) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             //   sScreen = getResources().getString(R.string.title_wall);
             ft.replace(R.id.frame_container, fragment_companysetting);
             ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-            ft.commitAllowingStateLoss();//commit();
+            ft.addToBackStack("tag").commitAllowingStateLoss();//commit();
         } else if (id == R.id.nav_postajob) {
             Intent intent =new Intent(Company_Base.this,CompanyDetail.class);
             startActivity(intent);

@@ -128,14 +128,14 @@ public class Employee_HomeActivity extends AppCompatActivity
                 //   sScreen = getResources().getString(R.string.title_wall);
                 ft.replace(R.id.frame_container, fragment_detail);
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                ft.commitAllowingStateLoss();//commit();
+                ft.addToBackStack("tag").commitAllowingStateLoss();//commit();
             // Handle the camera action
         } else if (id == R.id.nav_setting) {
             FragmentTransaction ft1= getSupportFragmentManager().beginTransaction();
             //   sScreen = getResources().getString(R.string.title_wall);
             ft1.replace(R.id.frame_container, frgmnt_setting);
             ft1.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-            ft1.commitAllowingStateLoss();//commit();
+            ft1.addToBackStack("tag").commitAllowingStateLoss();//commit();
 
         } else if (id == R.id.nav_newjob) {
             Intent intent =new Intent(Employee_HomeActivity.this,User_jobdetails.class);

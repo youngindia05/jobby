@@ -19,6 +19,7 @@ import android.widget.Button;
 
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -48,18 +49,17 @@ import java.util.Map;
  * Use the {@link fragment_emp_regitin#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class fragment_emp_regitin extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
+public class fragment_emp_regitin extends Fragment implements SeekBar.OnSeekBarChangeListener{    // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     Employee_RegistrationActivity employee_registrationActivity;
-    private static final String TAG = fragment_emp_regitin.class.getSimpleName();
+    private final String TAG = fragment_emp_regitin.class.getSimpleName();
     Button nxtbtn;
     Spinner spinner_industry;
     EditText edt_other;
-    private EditText HighestEducation,Specialization,University;
-    private Spinner Location,Industry,PassedYear;
+    private EditText HighestEducation, Specialization, University;
+    private Spinner Location, Industry, PassedYear;
     private ProgressDialog pDialog;
     AppController mInstance;
     AppConfig mappconfig;
@@ -74,6 +74,8 @@ public class fragment_emp_regitin extends Fragment {
 
     static final int DATE_DIALOG_ID = 999;
 
+    SeekBar seekBar_experience, seekBar_expected_salry;
+    TextView textViewProgress, textView_expectedSalry;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -93,7 +95,7 @@ public class fragment_emp_regitin extends Fragment {
      * @return A new instance of fragment fragment_emp_regitin.
      */
     // TODO: Rename and change types and number of parameters
-    public static fragment_emp_regitin newInstance(String param1, String param2) {
+    public fragment_emp_regitin newInstance(String param1, String param2) {
         fragment_emp_regitin fragment = new fragment_emp_regitin();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
@@ -115,10 +117,15 @@ public class fragment_emp_regitin extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootview=inflater.inflate(R.layout.fragment_fragment_emp_regitin, container, false);
+        View rootview = inflater.inflate(R.layout.fragment_fragment_emp_regitin, container, false);
         ////
+
         tvDisplayDate = (TextView)rootview.findViewById(R.id.tvDate);
        // dpResult = (DatePicker)rootview.findViewById(R.id.dpResult);
+
+        tvDisplayDate = (TextView) rootview.findViewById(R.id.tvDate);
+        dpResult = (DatePicker) rootview.findViewById(R.id.dpResult);
+
 
         final Calendar c = Calendar.getInstance();
         year = c.get(Calendar.YEAR);
@@ -130,15 +137,15 @@ public class fragment_emp_regitin extends Fragment {
                 // Month is 0 based, just add 1
                 .append(month + 1).append("-").append(day).append("-")
                 .append(year).append(" "));
-        btnChangeDate = (Button)rootview.findViewById(R.id.btnChangeDate);
+        btnChangeDate = (Button) rootview.findViewById(R.id.btnChangeDate);
 
         btnChangeDate.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-                DatePickerDialog datepicker= new DatePickerDialog(getContext(), datePickerListener,
-                        year, month,day);
+                DatePickerDialog datepicker = new DatePickerDialog(getContext(), datePickerListener,
+                        year, month, day);
 
                 datepicker.show();
             }
@@ -147,22 +154,22 @@ public class fragment_emp_regitin extends Fragment {
         // set current date into datepicker
 //        dpResult.init(year, month, day, null);
         ////
-        HighestEducation = (EditText)rootview.findViewById(R.id.hightEducation_ED);
-        Specialization= (EditText) rootview.findViewById(R.id.specilization_ED);
-        University = (EditText) rootview.findViewById(R.id.university_ED);
-        PassedYear = (Spinner)rootview.findViewById(R.id.spinner_yearOFpassed);
-        Location=(Spinner)rootview.findViewById(R.id.spinner_location);
+//        HighestEducation = (EditText) rootview.findViewById(R.id.hightEducation_ED);
+//        Specialization = (EditText) rootview.findViewById(R.id.specilization_ED);
+//        University = (EditText) rootview.findViewById(R.id.university_ED);
+//        PassedYear = (Spinner) rootview.findViewById(R.id.spinner_yearOFpassed);
+        Location = (Spinner) rootview.findViewById(R.id.spinner_location);
 
-        Industry=(Spinner)rootview.findViewById(R.id.spinner_Industry);
+        Industry = (Spinner) rootview.findViewById(R.id.spinner_Industry);
 
         pDialog = new ProgressDialog(getActivity());
         pDialog.setCancelable(false);
-        mInstance=new AppController();
-        mappconfig=new AppConfig();
+        mInstance = new AppController();
+        mappconfig = new AppConfig();
 
-        spinner_industry=(Spinner)rootview.findViewById(R.id.spinner_Industry);
+        spinner_industry = (Spinner) rootview.findViewById(R.id.spinner_Industry);
 
-        edt_other=(EditText)rootview.findViewById(R.id.edt_others);
+        edt_other = (EditText) rootview.findViewById(R.id.edt_others);
         //  spinner_industry.setSelection(11);
         // spinner_industry.setSelection((ArrayAdapter)spinner_industry.getAdapter()("Category 2"));
 
@@ -176,7 +183,8 @@ public class fragment_emp_regitin extends Fragment {
                             edt_other.setVisibility(View.VISIBLE);
                             //Toast.makeText(getActivity().getApplicationContext(),"hi",Toast.LENGTH_SHORT).show();
                             break;
-                        default:edt_other.setVisibility(View.GONE);
+                        default:
+                            edt_other.setVisibility(View.GONE);
 
                     }
                 }
@@ -192,11 +200,19 @@ public class fragment_emp_regitin extends Fragment {
             edt_other.setVisibility(View.VISIBLE);
         }*/
 
+        seekBar_expected_salry = (SeekBar) rootview.findViewById(R.id.seekBar_ExpectedSalary);
+        textView_expectedSalry = (TextView) rootview.findViewById(R.id.textProgressSalry);
 
-        nxtbtn=(Button)rootview.findViewById(R.id.btn);
+        seekBar_experience = (SeekBar) rootview.findViewById(R.id.seekBar_Experience);
+        seekBar_experience.setOnSeekBarChangeListener((SeekBar.OnSeekBarChangeListener) this);
+        seekBar_expected_salry.setOnSeekBarChangeListener((SeekBar.OnSeekBarChangeListener) this);
+        textViewProgress = (TextView) rootview.findViewById(R.id.textProgress);
+
+        nxtbtn = (Button) rootview.findViewById(R.id.btn);
         nxtbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String highEducation = HighestEducation.getText().toString().trim();
                 String specialization = Specialization.getText().toString().trim();
                 String university = University.getText().toString().trim();
@@ -218,19 +234,45 @@ public class fragment_emp_regitin extends Fragment {
                 }*/
 
                 fragmnet_emp_reg2 fragmnet_emp_reg2=new fragmnet_emp_reg2();
+=======
+//                String highEducation = HighestEducation.getText().toString().trim();
+//                String specialization = Specialization.getText().toString().trim();
+//                String university = University.getText().toString().trim();
+//                String passedYear = PassedYear.getSelectedItem().toString().trim();
+//                String location = Location.getSelectedItem().toString().trim();
+//                String industry = Industry.getSelectedItem().toString().trim();
+//                session = new SessionManager(getActivity().getApplicationContext());
+//                HashMap<String, String> user1 = session.getUsername();
+//                String username = user1.get(SessionManager.KEY_NAME);
+//                if (!highEducation.isEmpty() && !specialization.isEmpty() && !university.isEmpty() && !passedYear.isEmpty()
+//                        && !location.isEmpty() && !industry.isEmpty() && !username.isEmpty()) {
+//
+//                    registerUser(highEducation, specialization, university, passedYear, location, industry, username);
+//                } else {
+//                    Toast.makeText(getActivity().getApplicationContext(),
+//                            "Please enter your details!", Toast.LENGTH_LONG)
+//                            .show();
+//                }
+                fragmnet_emp_reg2 fragmnet_emp_reg2 = new fragmnet_emp_reg2();
+
 
                 FragmentTransaction fragmenttransaction = employee_registrationActivity.getSupportFragmentManager().beginTransaction();
                 //   sScreen = getResources().getString(R.string.title_wall);
                 fragmenttransaction.replace(R.id.frame_container1, fragmnet_emp_reg2);
                 fragmenttransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                fragmenttransaction.addToBackStack( "tag" ).commit();
+                fragmenttransaction.addToBackStack("tag0").commit();
             }
         });
         // Inflate the layout for this fragment
         return rootview;
+
 }
+
+    }
+
+
     private void registerUser(final String highEducation, final String specialization,
-                              final String university,final String passedyear,final String location,final  String industry,final  String username) {
+                              final String university, final String passedyear, final String location, final String industry, final String username) {
         // Tag used to cancel the request
         String tag_string_req = "req_register";
 
@@ -259,8 +301,8 @@ public class fragment_emp_regitin extends Fragment {
                         //   sScreen = getResources().getString(R.string.title_wall);
                         fragmenttransaction.replace(R.id.frame_container1, fragmnet_emp_reg2);
                         fragmenttransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                        fragmenttransaction.addToBackStack( "tag" ).commit();
-                        Toast.makeText(getActivity().getApplicationContext(), "User details successfully stored" , Toast.LENGTH_LONG).show();
+                        fragmenttransaction.addToBackStack("tag").commit();
+                        Toast.makeText(getActivity().getApplicationContext(), "User details successfully stored", Toast.LENGTH_LONG).show();
 
                     } else {
 
@@ -294,10 +336,9 @@ public class fragment_emp_regitin extends Fragment {
                 params.put("highEducation", highEducation);
                 params.put("specialization", specialization);
                 params.put("university", university);
-                params.put("passedyear",passedyear);
-                params.put("location",location);
-                params.put("industry",industry);
-
+                params.put("passedyear", passedyear);
+                params.put("location", location);
+                params.put("industry", industry);
 
 
                 return params;
@@ -318,7 +359,7 @@ public class fragment_emp_regitin extends Fragment {
 
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        employee_registrationActivity=(Employee_RegistrationActivity) activity;
+        employee_registrationActivity = (Employee_RegistrationActivity) activity;
     }
 
     @Override
@@ -326,6 +367,27 @@ public class fragment_emp_regitin extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
+
+    @Override
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+        if (seekBar == seekBar_experience) {
+            textViewProgress.setText("Your Experience is :  " + progress);
+        } else {
+            textView_expectedSalry.setText("Your Expected Salary is:" + progress);
+        }
+
+    }
+
+    public void onStartTrackingTouch(SeekBar seekBar) {
+
+    }
+
+    public void onStopTrackingTouch(SeekBar seekBar) {
+        seekBar.setSecondaryProgress(seekBar.getProgress());
+
+    }
+
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
@@ -333,7 +395,6 @@ public class fragment_emp_regitin extends Fragment {
 
     // display current date
     public void setCurrentDateOnView() {
-
 
 
     }
@@ -356,13 +417,14 @@ public class fragment_emp_regitin extends Fragment {
 
         }
     };
+
     @Override
     public void onResume() {
         super.onResume();
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         ActionBar actionBar = activity.getSupportActionBar();
         actionBar.setTitle("Educational Details");
-        employee_registrationActivity. toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        employee_registrationActivity.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 employee_registrationActivity.finish();

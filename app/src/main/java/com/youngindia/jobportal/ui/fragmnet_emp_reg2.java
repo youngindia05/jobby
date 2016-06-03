@@ -21,21 +21,11 @@ import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import java.io.File;
 import com.youngindia.jobportal.R;
 
-import java.io.File;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link fragmnet_emp_reg2.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link fragmnet_emp_reg2#newInstance} factory method to
- * create an instance of this fragment.
- */
-
-public class fragmnet_emp_reg2 extends Fragment implements SeekBar.OnSeekBarChangeListener {
+public class fragmnet_emp_reg2 extends Fragment  {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -52,7 +42,7 @@ public class fragmnet_emp_reg2 extends Fragment implements SeekBar.OnSeekBarChan
     Button btn_submit;
     Button btn_upload;
     private static final int PICK_FILE_REQUEST = 1;
-    private static final String TAG = fragmnet_emp_reg2.class.getSimpleName();
+    private  final String TAG = fragmnet_emp_reg2.class.getSimpleName();
     private String selectedFilePath;
     private OnFragmentInteractionListener mListener;
     Employee_RegistrationActivity employee_registrationActivity;
@@ -61,7 +51,7 @@ public class fragmnet_emp_reg2 extends Fragment implements SeekBar.OnSeekBarChan
     }
 
     // TODO: Rename and change types and number of parameters
-    public static fragmnet_emp_reg2 newInstance(String param1, String param2) {
+    public  fragmnet_emp_reg2 newInstance(String param1, String param2) {
         fragmnet_emp_reg2 fragment = new fragmnet_emp_reg2();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
@@ -85,15 +75,15 @@ public class fragmnet_emp_reg2 extends Fragment implements SeekBar.OnSeekBarChan
         View rootview=inflater.inflate(R.layout.fragment_fragmnet_emp_reg2, container, false);
         btn_submit=(Button)rootview.findViewById(R.id.btn_submit);
         btn_upload=(Button)rootview.findViewById(R.id.btn_upload);
-        tvFileName = (TextView) rootview.findViewById(R.id.tv_file_name);
+//        tvFileName = (TextView) rootview.findViewById(R.id.tv_file_name);
         seekBar_experience= (SeekBar) rootview.findViewById(R.id.seekBar_Experience);
         textViewProgress = (TextView)rootview.findViewById(R.id.textProgress);
-        spinnervalue=(EditText)rootview.findViewById(R.id.edit_experience);
+//        spinnervalue=(EditText)rootview.findViewById(R.id.edit_experience);
         seekBar_expected_salry= (SeekBar) rootview.findViewById(R.id.seekBar_ExpectedSalary);
         textView_expectedSalry= (TextView)rootview.findViewById(R.id.textProgressSalry);
-        String value = spinnervalue.getText().toString();
+  //      String value = spinnervalue.getText().toString();
        // seekBar_experience.setOnSeekBarChangeListener(this);
-btn_upload.setOnClickListener(new View.OnClickListener() {
+      btn_upload.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
         showFileChooser();
@@ -119,49 +109,49 @@ btn_upload.setOnClickListener(new View.OnClickListener() {
                 }
             });
         }*/
-        seekBar_experience.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
-
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress,
-                                          boolean fromUser) {
-                //---change the font size of the EditText---
-
-                spinnervalue.setText(String.valueOf(progress));
-            }
-        });
-
-        spinnervalue.addTextChangedListener(new TextWatcher() {
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                try {
-                    //Update Seekbar value after entering a number
-                    seekBar_experience.setProgress(Integer.parseInt(s.toString()));
-                    spinnervalue.setSelection(spinnervalue.getText().length());
-
-                } catch (Exception ex) {
-                }
-            }
-        });
+////        seekBar_experience.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+////            @Override
+////            public void onStopTrackingTouch(SeekBar seekBar) {
+////            }
+////
+////            @Override
+////            public void onStartTrackingTouch(SeekBar seekBar) {
+////            }
+////
+////            @Override
+////            public void onProgressChanged(SeekBar seekBar, int progress,
+////                                          boolean fromUser) {
+////                //---change the font size of the EditText---
+////
+////                spinnervalue.setText(String.valueOf(progress));
+////            }
+////        });
+////
+////        spinnervalue.addTextChangedListener(new TextWatcher() {
+//
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//
+//            }
+//
+//
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//                try {
+//                    //Update Seekbar value after entering a number
+//                    seekBar_experience.setProgress(Integer.parseInt(s.toString()));
+//                    spinnervalue.setSelection(spinnervalue.getText().length());
+//
+//                } catch (Exception ex) {
+//                }
+//            }
+//        });
 //        int progress = Integer.parseInt(value);
 
        // seekBar_expected_salry.setOnSeekBarChangeListener(this);
@@ -196,32 +186,6 @@ btn_upload.setOnClickListener(new View.OnClickListener() {
         mListener = null;
     }
 
-    @Override
-    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-        if(seekBar==seekBar_experience)
-        {
-
-            textViewProgress.setText("Your Experience is :  "+progress);
-        }
-        else
-        {
-            textView_expectedSalry.setText("Your Expected Salary is:"+progress);
-        }
-
-
-    }
-
-    @Override
-    public void onStartTrackingTouch(SeekBar seekBar) {
-
-    }
-
-    @Override
-    public void onStopTrackingTouch(SeekBar seekBar) {
-        seekBar.setSecondaryProgress(seekBar.getProgress());
-
-    }
-
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -232,6 +196,7 @@ btn_upload.setOnClickListener(new View.OnClickListener() {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
+
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
@@ -251,6 +216,7 @@ btn_upload.setOnClickListener(new View.OnClickListener() {
 
         actionBar.setTitle("Educational Details");
     }
+
     private void showFileChooser() {
 
 

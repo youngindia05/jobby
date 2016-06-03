@@ -2,9 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="16dp"
-    android:paddingLeft="24dp"
-    android:paddingRight="24dp"
+    android:padding="16dp"
+    android:layout_marginTop="20dp"
     android:background="@color/backgd_light_blue">
     <com.youngindia.jobportal.fonts.Roboto_Regular
         android:id="@+id/txt_designation"
@@ -52,6 +51,7 @@
         android:layout_height="wrap_content"
         android:text="@string/location"
         android:textColor="@color/textColorPrimary"
+        android:layout_weight="1"
         android:layout_below="@id/linearlayout_qualification"
         android:textSize="@dimen/lbl_txtsize"/>
     <LinearLayout
@@ -76,8 +76,9 @@
         android:layout_height="wrap_content"
         android:text="@string/salary"
         android:textColor="@color/textColorPrimary"
-        android:textSize="@dimen/lbl_txtsize"
-        android:layout_below="@+id/linearlayout_location"/>
+        android:layout_weight="1"
+        android:layout_below="@id/linearlayout_location"
+        android:textSize="@dimen/lbl_txtsize"/>
     <LinearLayout
         android:id="@+id/linearlayout_slary"
         android:layout_width="match_parent"
@@ -91,10 +92,7 @@
             android:id="@+id/salary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:entries="@array/salary"
-            android:layout_below="@+id/linearlayout_location"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:entries="@array/salary"/>
     </LinearLayout>
     <com.youngindia.jobportal.fonts.Roboto_Regular_Button
         android:id="@+id/btnSubmit"
@@ -104,6 +102,4 @@
         android:background="@drawable/btnshape"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"/>
-
-
 </RelativeLayout>

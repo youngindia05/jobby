@@ -65,9 +65,11 @@ public class LoginUser_Activity extends AppCompatActivity {
     String status="Iscandidat";
     AppController mInstance;
     SegmentedGroup segmented2;
-    TextView txt_forgetpsw,txt_registration;
 
 
+
+
+    TextView txt_forgetpsw,txt_registration,txt_createAccount;
 
     int SPLASH_TIME_OUT=5000;
 
@@ -82,8 +84,24 @@ public class LoginUser_Activity extends AppCompatActivity {
         btn_Login=(Button) findViewById(R.id.btn_login);
         pDialog=new ProgressDialog(this);
         mInstance=new AppController();
+
         segmented2 = (SegmentedGroup)findViewById(R.id.segmented2);
         txt_forgetpsw=(TextView) findViewById(R.id.txt_forget_psw);
+        txt_createAccount= (TextView) findViewById(R.id.txt_newRegstration);
+        txt_createAccount.setOnClickListener(new View.OnClickListener() {
+
+
+            @Override
+            public void onClick(View v) {
+               Intent  intent =new Intent(LoginUser_Activity.this,Employee_RegistrationActivity.class);
+                startActivity(intent);
+            }
+        });
+        {
+
+        }
+
+
         txt_registration=(TextView) findViewById(R.id.txt_newuserregistraation);
         Dialog_Advertisement showAdvertisment=new Dialog_Advertisement();
         showAdvertisment.showDialog(this,"I am happy.",R.drawable.profile_pic);

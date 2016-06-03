@@ -231,24 +231,47 @@
         <item>10Lac</item>
     </string-array>
 
-    <string name="higher_education">Higher Education</string>
-    <string name="specilization">Speclization</string>
-    <string name="university">University</string>
-    <string name="jobskill">Job Skill</string>
+    <string name="current_company">Current Company</string>
+    <string name="keyskill">Key Skills</string>
+    <string name="company_role">University</string>
+    <string name="languages">Languages</string>
+    <string name="job_perfernce">Job Perfernce</string>
+    <string name="other_detail">Other Detail</string>
+
+    <string-array name="categoy_array">Catagory
+
+        <item>Select Category</item>
+        <item>Genral</item>
+        <item>SC</item>
+        <item>OBC</item>
+        <item>ST</item>
+
+        </string-array>
+
+    <string name="location_perfer">Perfer Location</string>
     <string name="postion">Position</string>
     <string name="description">Description</string>
     <string name="apply">Apply</string>
     <string name="experecnce">Experience</string>
     <string name="name1">Name</string>
     <string name="email">Email</string>
+    <string name="current_address">Current Address</string>
+    <string name="permant_address">Permanent Address</string>
     <string name="phone">Phone</string>
     <string name="role">Role</string>
-
+    <string name="graducation">Graducation</string>
+    <string name="percentage">Percentage/CGPA</string>
+    <string name="midle_name">Middle Name</string>
+    <string name="tenth">Matriculation</string>
+    <string name="others">Others</string>
+    <string name="twelv">Secondary</string>
+    <string name="lst_name">Last Name</string>
     <string name="job_owner_Detail">Job Owner Details</string>
     <string name="expected_slry">Expected Salary</string>
     <string name="job">Job</string>
     <string name="job_detail">Job Detail</string>
     <string name="key_skill">Key Skills</string>
+    <string name="dob">Date of birth</string>
     <string name="total_experecnce">Total Experience</string>
 
     <string name="year">Year of passed</string>
@@ -264,6 +287,13 @@
     <string name="title_activity_employer__home">Employer_HomeActivity</string>
     <string name="inbox">Inbox</string>
     <string name="categories">Categories</string>
+    <string name="physically_challeged">Physically Challeged</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <string name="sponsored_field">Sponsored Field</string>
+    <string name="sponsored_field_name">Sponsor Name</string>
+    <string name="sponsored_field_detailed">Sponsore Detailes</string>
     <string name="starred">Post a Job</string>
     <string-array name="items">
         <item>Please select the value</item>

@@ -1,8 +1,9 @@
 package com.youngindia.jobportal.ui;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.content.Context;
+import android.app.ProgressDialog;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,21 +14,31 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.Button;
 
+import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.youngindia.jobportal.R;
-import com.youngindia.jobportal.adapter.DateTimePicker;
+
+import com.youngindia.jobportal.database.SessionManager;
+import com.youngindia.jobportal.ui.app.AppConfig;
+import com.youngindia.jobportal.ui.app.AppController;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -43,11 +54,25 @@ public class fragment_emp_regitin extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     Employee_RegistrationActivity employee_registrationActivity;
+    private static final String TAG = fragment_emp_regitin.class.getSimpleName();
     Button nxtbtn;
     Spinner spinner_industry;
-    TextView edt_other;
+    EditText edt_other;
+    private EditText HighestEducation,Specialization,University;
+    private Spinner Location,Industry,PassedYear;
+    private ProgressDialog pDialog;
+    AppController mInstance;
+    AppConfig mappconfig;
+    SessionManager session;
+    private TextView tvDisplayDate;
+    private DatePicker dpResult;
+    private Button btnChangeDate;
 
-    TextView dateResult, date2;
+    private int year;
+    private int month;
+    private int day;
+
+    static final int DATE_DIALOG_ID = 999;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -88,25 +113,108 @@ public class fragment_emp_regitin extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         View rootview=inflater.inflate(R.layout.fragment_fragment_emp_regitin, container, false);
-        dateResult = (TextView)rootview.findViewById(R.id.textResult);
-        date2 = (TextView)rootview.findViewById(R.id.textView1);
+        ////
+        tvDisplayDate = (TextView)rootview.findViewById(R.id.tvDate);
+        dpResult = (DatePicker)rootview.findViewById(R.id.dpResult);
 
+        final Calendar c = Calendar.getInstance();
+        year = c.get(Calendar.YEAR);
+        month = c.get(Calendar.MONTH);
+        day = c.get(Calendar.DAY_OF_MONTH);
+
+//        // set current date into textview
+        tvDisplayDate.setText(new StringBuilder()
+                // Month is 0 based, just add 1
+                .append(month + 1).append("-").append(day).append("-")
+                .append(year).append(" "));
+        btnChangeDate = (Button)rootview.findViewById(R.id.btnChangeDate);
+
+        btnChangeDate.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                DatePickerDialog datepicker= new DatePickerDialog(getContext(), datePickerListener,
+                        year, month,day);
+
+                datepicker.show();
+            }
+
+        });
+        // set current date into datepicker
+//        dpResult.init(year, month, day, null);
+        ////
+        HighestEducation = (EditText)rootview.findViewById(R.id.hightEducation_ED);
+        Specialization= (EditText) rootview.findViewById(R.id.specilization_ED);
+        University = (EditText) rootview.findViewById(R.id.university_ED);
+        PassedYear = (Spinner)rootview.findViewById(R.id.spinner_yearOFpassed);
+        Location=(Spinner)rootview.findViewById(R.id.spinner_location);
+
+        Industry=(Spinner)rootview.findViewById(R.id.spinner_Industry);
+
+        pDialog = new ProgressDialog(getActivity());
+        pDialog.setCancelable(false);
+        mInstance=new AppController();
+        mappconfig=new AppConfig();
 
         spinner_industry=(Spinner)rootview.findViewById(R.id.spinner_Industry);
-        edt_other=(TextView)rootview.findViewById(R.id.edt_others);
-        if(spinner_industry.getSelectedItem().equals("Others"))
+
+        edt_other=(EditText)rootview.findViewById(R.id.edt_others);
+        //  spinner_industry.setSelection(11);
+        // spinner_industry.setSelection((ArrayAdapter)spinner_industry.getAdapter()("Category 2"));
+
+        spinner_industry.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                {
+                    switch (position) {
+                        case 11:
+                            edt_other.setVisibility(View.VISIBLE);
+                            //Toast.makeText(getActivity().getApplicationContext(),"hi",Toast.LENGTH_SHORT).show();
+                            break;
+                        default:edt_other.setVisibility(View.GONE);
+
+                    }
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+       /* if(spinner_industry.getSelectedItem().equals("Others"))
         {
             edt_other.setVisibility(View.VISIBLE);
-        }
+        }*/
 
 
         nxtbtn=(Button)rootview.findViewById(R.id.btn);
         nxtbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String highEducation = HighestEducation.getText().toString().trim();
+                String specialization = Specialization.getText().toString().trim();
+                String university = University.getText().toString().trim();
+                String passedYear = PassedYear.getSelectedItem().toString().trim();
+                String location=Location.getSelectedItem().toString().trim();
+                String industry=Industry.getSelectedItem().toString().trim();
+                session = new SessionManager(getActivity().getApplicationContext());
+                HashMap<String, String> user1=session.getUsername();
+                String username = user1.get(SessionManager.KEY_NAME);
+                if (!highEducation.isEmpty() && !specialization.isEmpty() && !university.isEmpty() && !passedYear.isEmpty()
+                        && !location.isEmpty() && !industry.isEmpty() && !username.isEmpty()) {
+
+                    registerUser(highEducation, specialization, university, passedYear,location,industry,username);
+                } else {
+                    Toast.makeText(getActivity().getApplicationContext(),
+                            "Please enter your details!", Toast.LENGTH_LONG)
+                            .show();
+                }
                 fragmnet_emp_reg2 fragmnet_emp_reg2=new fragmnet_emp_reg2();
 
                 FragmentTransaction fragmenttransaction = employee_registrationActivity.getSupportFragmentManager().beginTransaction();
@@ -118,6 +226,85 @@ public class fragment_emp_regitin extends Fragment {
         });
         // Inflate the layout for this fragment
         return rootview;
+    }
+    private void registerUser(final String highEducation, final String specialization,
+                              final String university,final String passedyear,final String location,final  String industry,final  String username) {
+        // Tag used to cancel the request
+        String tag_string_req = "req_register";
+
+        pDialog.setMessage("Registering ...");
+
+        StringRequest strReq = new StringRequest(Request.Method.POST,
+                AppConfig.URL_USERDETAIL, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                Log.d(TAG, "Register Response: " + response.toString());
+
+                try {
+                    JSONObject jObj = null;
+                    try {
+                        jObj = new JSONObject(response);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    boolean error = jObj.getBoolean("error");
+                    if (!error) {
+
+                        fragmnet_emp_reg2 fragmnet_emp_reg2 = new fragmnet_emp_reg2();
+
+                        FragmentTransaction fragmenttransaction = employee_registrationActivity.getSupportFragmentManager().beginTransaction();
+                        //   sScreen = getResources().getString(R.string.title_wall);
+                        fragmenttransaction.replace(R.id.frame_container1, fragmnet_emp_reg2);
+                        fragmenttransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                        fragmenttransaction.addToBackStack( "tag" ).commit();
+                        Toast.makeText(getActivity().getApplicationContext(), "User details successfully stored" , Toast.LENGTH_LONG).show();
+
+                    } else {
+
+                        // Error occurred in registration. Get the error
+                        // message
+                        String errorMsg = jObj.getString("error_msg");
+                        Toast.makeText(getActivity().getApplicationContext(),
+                                errorMsg, Toast.LENGTH_LONG).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e(TAG, "Registration Error: " + error.getMessage());
+                Toast.makeText(getActivity().getApplicationContext(),
+                        error.getMessage(), Toast.LENGTH_LONG).show();
+                // hideDialog();
+            }
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() {
+                // Posting params to register url
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("username", username);
+                params.put("highEducation", highEducation);
+                params.put("specialization", specialization);
+                params.put("university", university);
+                params.put("passedyear",passedyear);
+                params.put("location",location);
+                params.put("industry",industry);
+
+
+
+                return params;
+            }
+
+        };
+
+        // Adding request to request queue
+        mInstance.getInstance().addToRequestQueue(strReq, tag_string_req);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -137,85 +324,36 @@ public class fragment_emp_regitin extends Fragment {
         super.onDetach();
         mListener = null;
     }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-
-
-    public void customDatePicker_click(View v){
-        // Create the dialog
-        final Dialog mDateTimeDialog = new Dialog(getActivity());
-        // Inflate the root layout
-        final RelativeLayout mDateTimeDialogView = (RelativeLayout) getLayoutInflater().inflate(R.layout.date_time_dialog, null);
-        // Grab widget instance
-        final DateTimePicker mDateTimePicker = (DateTimePicker) mDateTimeDialogView.findViewById(R.id.DateTimePicker);
-        mDateTimePicker.setDateChangedListener((DateTimePicker.DateWatcher) getActivity());
-        mDateTimePicker.initData();
-        //end
-        Button setDateBtn = (Button)mDateTimeDialogView.findViewById(R.id.SetDateTime);
-        // Update demo TextViews when the "OK" button is clicked
-        setDateBtn.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-                mDateTimePicker.clearFocus();
-	/*				String result_string = mDateTimePicker.getMonth() + "/" + String.valueOf(mDateTimePicker.getDay()) + "/" + String.valueOf(mDateTimePicker.getYear())
-							+ "  " + String.valueOf(mDateTimePicker.getHour()) + ":" + String.valueOf(mDateTimePicker.getMinute());*/
-                String result_string = mDateTimePicker.getMonth() + "/" + String.valueOf(mDateTimePicker.getDay()) + "/" + String.valueOf(mDateTimePicker.getYear());
-
-//					if(mDateTimePicker.getHour() > 12) result_string = result_string + "PM";
-//					else result_string = result_string + "AM";
-                date2.setText(result_string);
-                mDateTimeDialog.dismiss();
-            }
-        });
-
-        Button cancelBtn = (Button)mDateTimeDialogView.findViewById(R.id.CancelDialog);
-        // Cancel the dialog when the "Cancel" button is clicked
-        cancelBtn.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-                mDateTimePicker.reset();
-                mDateTimeDialog.cancel();
-            }
-        });
-
-        // Reset Date and Time pickers when the "Reset" button is clicked
-
-        Button resetBtn = (Button)mDateTimeDialogView.findViewById(R.id.ResetDateTime);
-        resetBtn.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-                mDateTimePicker.reset();
-            }
-        });
-
-        // Setup TimePicker
-        // No title on the dialog window
-        mDateTimeDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        // Set the dialog content view
-        mDateTimeDialog.setContentView(mDateTimeDialogView);
-        // Display the dialog
-        mDateTimeDialog.show();
-    }
-
-    public void onDateChanged(Calendar c) {
-        Log.e("","" + c.get(Calendar.MONTH) + " " + c.get(Calendar.DAY_OF_MONTH)+ " " + c.get(Calendar.YEAR));
-        String result_string =String.valueOf(c.get(Calendar.MONTH)+1)  + "/" + String.valueOf(c.get(Calendar.DAY_OF_MONTH)) + "/" + String.valueOf(c.get(Calendar.YEAR));
-//			_tvUserDOB.setTypeface(CGlobalVariables.tfFoEnglish);
-        dateResult.setText(result_string+" (mm/dd/yyyy)");
-    }
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+    // display current date
+    public void setCurrentDateOnView() {
+
+
+
+    }
+
+
+    private DatePickerDialog.OnDateSetListener datePickerListener
+            = new DatePickerDialog.OnDateSetListener() {
+
+        // when dialog box is closed, below method will be called.
+        public void onDateSet(DatePicker view, int selectedYear,
+                              int selectedMonth, int selectedDay) {
+            year = selectedYear;
+            month = selectedMonth;
+            day = selectedDay;
+
+            // set selected date into textview
+            tvDisplayDate.setText(new StringBuilder().append(month + 1)
+                    .append("-").append(day).append("-").append(year)
+                    .append(" "));
+
+        }
+    };
     @Override
     public void onResume() {
         super.onResume();
@@ -225,8 +363,8 @@ public class fragment_emp_regitin extends Fragment {
         employee_registrationActivity. toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               employee_registrationActivity.finish();
-               // Toast.makeText(getActivity().getApplicationContext(), "Back clicked!", Toast.LENGTH_SHORT).show();
+                employee_registrationActivity.finish();
+                //
             }
         });
     }

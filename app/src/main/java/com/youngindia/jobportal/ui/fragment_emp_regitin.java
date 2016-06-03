@@ -1,8 +1,9 @@
 package com.youngindia.jobportal.ui;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,12 +15,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import android.widget.Toast;
@@ -29,13 +29,14 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.youngindia.jobportal.R;
+
 import com.youngindia.jobportal.database.SessionManager;
 import com.youngindia.jobportal.ui.app.AppConfig;
 import com.youngindia.jobportal.ui.app.AppController;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -56,14 +57,22 @@ public class fragment_emp_regitin extends Fragment {
     private static final String TAG = fragment_emp_regitin.class.getSimpleName();
     Button nxtbtn;
     Spinner spinner_industry;
-    TextView edt_other;
-    private EditText HighestEducation,Specialization,University,PassedYear;
-    private Spinner Location,Industry;
+    EditText edt_other;
+    private EditText HighestEducation,Specialization,University;
+    private Spinner Location,Industry,PassedYear;
     private ProgressDialog pDialog;
     AppController mInstance;
     AppConfig mappconfig;
     SessionManager session;
+    private TextView tvDisplayDate;
+    private DatePicker dpResult;
+    private Button btnChangeDate;
 
+    private int year;
+    private int month;
+    private int day;
+
+    static final int DATE_DIALOG_ID = 999;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -107,11 +116,41 @@ public class fragment_emp_regitin extends Fragment {
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         View rootview=inflater.inflate(R.layout.fragment_fragment_emp_regitin, container, false);
+        ////
+        tvDisplayDate = (TextView)rootview.findViewById(R.id.tvDate);
+       // dpResult = (DatePicker)rootview.findViewById(R.id.dpResult);
 
+        final Calendar c = Calendar.getInstance();
+        year = c.get(Calendar.YEAR);
+        month = c.get(Calendar.MONTH);
+        day = c.get(Calendar.DAY_OF_MONTH);
+
+//        // set current date into textview
+        tvDisplayDate.setText(new StringBuilder()
+                // Month is 0 based, just add 1
+                .append(month + 1).append("-").append(day).append("-")
+                .append(year).append(" "));
+        btnChangeDate = (Button)rootview.findViewById(R.id.btnChangeDate);
+
+        btnChangeDate.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                DatePickerDialog datepicker= new DatePickerDialog(getContext(), datePickerListener,
+                        year, month,day);
+
+                datepicker.show();
+            }
+
+        });
+        // set current date into datepicker
+//        dpResult.init(year, month, day, null);
+        ////
         HighestEducation = (EditText)rootview.findViewById(R.id.hightEducation_ED);
         Specialization= (EditText) rootview.findViewById(R.id.specilization_ED);
         University = (EditText) rootview.findViewById(R.id.university_ED);
-        PassedYear = (EditText)rootview.findViewById(R.id.year_ED);
+        PassedYear = (Spinner)rootview.findViewById(R.id.spinner_yearOFpassed);
         Location=(Spinner)rootview.findViewById(R.id.spinner_location);
 
         Industry=(Spinner)rootview.findViewById(R.id.spinner_Industry);
@@ -123,9 +162,9 @@ public class fragment_emp_regitin extends Fragment {
 
         spinner_industry=(Spinner)rootview.findViewById(R.id.spinner_Industry);
 
-        edt_other=(TextView)rootview.findViewById(R.id.edt_others);
-      //  spinner_industry.setSelection(11);
-       // spinner_industry.setSelection((ArrayAdapter)spinner_industry.getAdapter()("Category 2"));
+        edt_other=(EditText)rootview.findViewById(R.id.edt_others);
+        //  spinner_industry.setSelection(11);
+        // spinner_industry.setSelection((ArrayAdapter)spinner_industry.getAdapter()("Category 2"));
 
         spinner_industry.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -158,12 +197,10 @@ public class fragment_emp_regitin extends Fragment {
         nxtbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 String highEducation = HighestEducation.getText().toString().trim();
                 String specialization = Specialization.getText().toString().trim();
                 String university = University.getText().toString().trim();
-                String passedYear = PassedYear.getText().toString().trim();
+                String passedYear = PassedYear.getSelectedItem().toString().trim();
                 String location=Location.getSelectedItem().toString().trim();
                 String industry=Industry.getSelectedItem().toString().trim();
                 session = new SessionManager(getActivity().getApplicationContext());
@@ -177,7 +214,9 @@ public class fragment_emp_regitin extends Fragment {
                     Toast.makeText(getActivity().getApplicationContext(),
                             "Please enter your details!", Toast.LENGTH_LONG)
                             .show();
+
                 }*/
+
                 fragmnet_emp_reg2 fragmnet_emp_reg2=new fragmnet_emp_reg2();
 
                 FragmentTransaction fragmenttransaction = employee_registrationActivity.getSupportFragmentManager().beginTransaction();
@@ -189,7 +228,7 @@ public class fragment_emp_regitin extends Fragment {
         });
         // Inflate the layout for this fragment
         return rootview;
-    }
+}
     private void registerUser(final String highEducation, final String specialization,
                               final String university,final String passedyear,final String location,final  String industry,final  String username) {
         // Tag used to cancel the request
@@ -287,21 +326,36 @@ public class fragment_emp_regitin extends Fragment {
         super.onDetach();
         mListener = null;
     }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+    // display current date
+    public void setCurrentDateOnView() {
+
+
+
+    }
+
+
+    private DatePickerDialog.OnDateSetListener datePickerListener
+            = new DatePickerDialog.OnDateSetListener() {
+
+        // when dialog box is closed, below method will be called.
+        public void onDateSet(DatePicker view, int selectedYear,
+                              int selectedMonth, int selectedDay) {
+            year = selectedYear;
+            month = selectedMonth;
+            day = selectedDay;
+
+            // set selected date into textview
+            tvDisplayDate.setText(new StringBuilder().append(month + 1)
+                    .append("-").append(day).append("-").append(year)
+                    .append(" "));
+
+        }
+    };
     @Override
     public void onResume() {
         super.onResume();
@@ -311,8 +365,8 @@ public class fragment_emp_regitin extends Fragment {
         employee_registrationActivity. toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               employee_registrationActivity.finish();
-               //
+                employee_registrationActivity.finish();
+                //
             }
         });
     }

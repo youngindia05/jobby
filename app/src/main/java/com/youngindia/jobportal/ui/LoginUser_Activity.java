@@ -50,10 +50,7 @@ public class LoginUser_Activity extends AppCompatActivity {
     String status="Iscandidat";
     AppController mInstance;
     SegmentedGroup segmented2;
-
-    TextView txt_forgetpsw,txt_createAccount;
-
-    TextView txt_forgetpsw,txt_registration;
+    TextView txt_forgetpsw,txt_registration,txt_createAccount;
     int SPLASH_TIME_OUT=5000;
 
     private static final String TAG = LoginUser_Activity.class.getSimpleName();

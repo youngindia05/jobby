@@ -44,7 +44,7 @@ import java.util.Map;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link fragment_emp_regitin.OnFragmentInteractionListener} interface
+
  * to handle interaction events.
  * Use the {@link fragment_emp_regitin#newInstance} factory method to
  * create an instance of this fragment.
@@ -67,6 +67,7 @@ public class fragment_emp_regitin extends Fragment implements SeekBar.OnSeekBarC
     private TextView tvDisplayDate;
     private DatePicker dpResult;
     private Button btnChangeDate;
+    fragmnet_emp_reg2 fragmnet_emp_reg2;
 
     private int year;
     private int month;
@@ -213,15 +214,15 @@ public class fragment_emp_regitin extends Fragment implements SeekBar.OnSeekBarC
             @Override
             public void onClick(View v) {
 
-                String highEducation = HighestEducation.getText().toString().trim();
-                String specialization = Specialization.getText().toString().trim();
-                String university = University.getText().toString().trim();
-                String passedYear = PassedYear.getSelectedItem().toString().trim();
-                String location=Location.getSelectedItem().toString().trim();
-                String industry=Industry.getSelectedItem().toString().trim();
-                session = new SessionManager(getActivity().getApplicationContext());
-                HashMap<String, String> user1=session.getUsername();
-                String username = user1.get(SessionManager.KEY_NAME);
+//                String highEducation = HighestEducation.getText().toString().trim();
+//                String specialization = Specialization.getText().toString().trim();
+//                String university = University.getText().toString().trim();
+//                String passedYear = PassedYear.getSelectedItem().toString().trim();
+//                String location=Location.getSelectedItem().toString().trim();
+//                String industry=Industry.getSelectedItem().toString().trim();
+//                session = new SessionManager(getActivity().getApplicationContext());
+//                HashMap<String, String> user1=session.getUsername();
+//                String username = user1.get(SessionManager.KEY_NAME);
               /*  if (!highEducation.isEmpty() && !specialization.isEmpty() && !university.isEmpty() && !passedYear.isEmpty()
                         && !location.isEmpty() && !industry.isEmpty() && !username.isEmpty()) {
 
@@ -233,8 +234,8 @@ public class fragment_emp_regitin extends Fragment implements SeekBar.OnSeekBarC
 
                 }*/
 
-                fragmnet_emp_reg2 fragmnet_emp_reg2=new fragmnet_emp_reg2();
-=======
+
+
 //                String highEducation = HighestEducation.getText().toString().trim();
 //                String specialization = Specialization.getText().toString().trim();
 //                String university = University.getText().toString().trim();
@@ -253,7 +254,7 @@ public class fragment_emp_regitin extends Fragment implements SeekBar.OnSeekBarC
 //                            "Please enter your details!", Toast.LENGTH_LONG)
 //                            .show();
 //                }
-                fragmnet_emp_reg2 fragmnet_emp_reg2 = new fragmnet_emp_reg2();
+                 fragmnet_emp_reg2 = new fragmnet_emp_reg2();
 
 
                 FragmentTransaction fragmenttransaction = employee_registrationActivity.getSupportFragmentManager().beginTransaction();
@@ -267,8 +268,6 @@ public class fragment_emp_regitin extends Fragment implements SeekBar.OnSeekBarC
         return rootview;
 
 }
-
-    }
 
 
     private void registerUser(final String highEducation, final String specialization,

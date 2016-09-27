@@ -2,8 +2,6 @@ package com.youngindia.jobportal.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -12,11 +10,8 @@ import android.widget.ListView;
 
 import com.youngindia.jobportal.R;
 import com.youngindia.jobportal.adapter.ListAdapter;
-import com.youngindia.jobportal.ui.Details_Page;
 
-import java.sql.Array;
-
-public class Search_list_Activity extends AppCompatActivity {
+public class DailyWagers_Search extends AppCompatActivity {
 
     ListAdapter listAdapter;
 
@@ -40,7 +35,7 @@ public class Search_list_Activity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent i=new Intent(Search_list_Activity.this, Details_Page.class);
+                Intent i=new Intent(DailyWagers_Search.this, Details_Page.class);
                 startActivity(i);
             }
         });

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/imagejob6">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="15dp">
+
+        <TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/txtheader"
+    android:gravity="center"
+    android:textSize="18sp"
+    android:textColor="@color/radio_button_selected_color_candidate"
+    android:text="Please select an option to login as:"
+    android:layout_marginBottom="40dp"/>
+        <RadioGroup
+            android:id="@+id/radiogroup1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/txtheader"
+            android:layout_margin="5dp">
+            <RadioButton
+                android:id="@+id/btncandidate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtheader"
+                android:text="Candidate"
+                android:textStyle="bold"
+                android:layout_margin="5dp"
+                android:textSize="18sp"
+                android:checked="true"
+                android:textColor="@color/color_blue"/>
+            <RadioButton
+                android:id="@+id/btncompany"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btncandidate"
+                android:textColor="@color/color_blue"
+                android:textStyle="bold"
+                android:layout_margin="5dp"
+                android:textSize="18sp"
+                android:text="Company" />
+            <RadioButton
+                android:id="@+id/btnfranchise"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btncompany"
+                android:textColor="@color/color_blue"
+                android:textStyle="bold"
+                android:layout_margin="5dp"
+                android:textSize="18sp"
+                android:text="Franchise" />
+            <RadioButton
+                android:id="@+id/btndailywagers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btnfranchise"
+                android:textStyle="bold"
+                android:layout_margin="5dp"
+                android:textSize="18sp"
+                android:textColor="@color/color_blue"
+                android:text="DailyWagers" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="130dp"
+                android:src="@drawable/logoyoungindia"  />
+        </RadioGroup>
+
+    <Button
+        android:id="@+id/btnok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/btn_color"
+        android:layout_centerInParent="true"
+        android:text="OK"
+        android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+</LinearLayout>
